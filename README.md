@@ -2,6 +2,10 @@
 Implement popular llm alignment algorithms in PyTorch with minimal lines of code!
 
 
+## News
+
+- [2025/8] The Minimal-LLM-Alignment repository was open-sourced.
+
 ## Method Overview
 | **Release** | **Method** | **Reference** | **Notes** | **Link** |
 | --- | --- | --- | --- | --- |
