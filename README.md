@@ -28,5 +28,4 @@ Implement popular llm alignment algorithms in PyTorch with minimal lines of code
 ### Online RL
 | **Release** | **Method** | **Reference** | **Notes** | **Link** |
 | --- | --- | --- | --- | --- |
-| 2017/07 | **PPO** | Proximal Policy Optimization Algorithms
- | Arxiv | [paper](https://arxiv.org/abs/2305.18290)/[code](https://github.com/eric-mitchell/direct-preference-optimization) |
+| 2017/07 | **PPO** | Proximal Policy Optimization Algorithms | Arxiv | [paper](https://arxiv.org/abs/2305.18290)/[code](https://github.com/eric-mitchell/direct-preference-optimization) |
