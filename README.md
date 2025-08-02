@@ -29,3 +29,6 @@ Implement popular llm alignment algorithms in PyTorch with minimal lines of code
 | **Release** | **Method** | **Reference** | **Notes** | **Link** |
 | --- | --- | --- | --- | --- |
 | 2017/07 | **PPO** | Proximal Policy Optimization Algorithms | Arxiv | [paper](https://arxiv.org/abs/1707.06347)/[code](https://github.com/nikhilbarhate99/PPO-PyTorch) |
+| 2017/07 | **GRPO** | Deepseekmath: Pushing the limits of mathematical reasoning in open language models | Arxiv | [paper](https://arxiv.org/abs/2402.03300)/[code](https://github.com/lsdefine/simple_GRPO) |
+
+
