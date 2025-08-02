@@ -15,6 +15,7 @@ Implement popular llm alignment algorithms in PyTorch with minimal lines of code
 
 
 ## Awesome LLM Alignment Methods
+Note: Some algorithms lack official implementations; hence, I adopt the excellent open-source version.
 
 ### Offline RL
 | **Release** | **Method** | **Reference** | **Notes** | **Link** |
