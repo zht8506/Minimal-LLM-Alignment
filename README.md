@@ -8,10 +8,10 @@ Implement popular llm alignment algorithms in PyTorch with minimal lines of code
 
 ## Supported Methods
 
-| Method               |     Type    |    Freeze-tuning   |       LoRA         |
+| Method               |     Type    |    Full   |       LoRA         |
 | ---------------------- | ------------------ | ------------------ | ------------------ |
-| Supervised Fine-Tuning | SFT | :white_check_mark: | :white_check_mark: | 
-| DPO Training           | offline RL | :white_check_mark: | :white_check_mark: |
+| Supervised Fine-Tuning | SFT | In Development | In Development | 
+| DPO Training           | offline RL | In Development | In Development |
 
 
 | **Release** | **Method** | **Reference** | **Notes** | **Link** |
