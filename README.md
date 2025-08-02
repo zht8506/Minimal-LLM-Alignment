@@ -10,8 +10,8 @@ Implement popular llm alignment algorithms in PyTorch with minimal lines of code
 
 | Method               |     Type    |    Full   |       LoRA         |
 | ---------------------- | ------------------ | ------------------ | ------------------ |
-| Supervised Fine-Tuning | SFT | In Development | In Development | 
-| DPO Training           | offline RL | In Development | In Development |
+| SFT           | SFT | In Development | In Development | 
+| DPO           | offline RL | In Development | In Development |
 
 
 ## Awesome LLM Alignment Methods
