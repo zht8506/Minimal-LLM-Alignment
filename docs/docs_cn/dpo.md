@@ -13,6 +13,6 @@ PPO（Proximal Policy Optimization）涉及到Reward Model（RM）的训练和�
 
 # 3 参考资料
 [1] [人人都能看懂的DPO数学原理](https://zhuanlan.zhihu.com/p/721073733) \
-[2] DPO及其衍生算法XX-O \
-[3] DPO和实现代码 \
-[4] DPO: Direct Preference Optimization 论文解读及代码实践
+[2] [DPO及其衍生算法XX-O](https://zhuanlan.zhihu.com/p/30274484125) \
+[3] [DPO和实现代码](https://zhuanlan.zhihu.com/p/715114620) \
+[4] [DPO: Direct Preference Optimization 论文解读及代码实践](https://zhuanlan.zhihu.com/p/642569664)
