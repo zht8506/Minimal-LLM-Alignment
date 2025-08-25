@@ -31,7 +31,7 @@ L_{ppo} = \max_{\pi_\theta} \left\{ \mathbb{E}_{x \sim \mathcal{D}, y \sim \pi_\
 
 其中， $r_{\phi}$ 为Reward Model的打分。
 
-对于$$L_{rm}$$，
+对于 $$L_{rm}$$ ，
 
 $r_{\phi}$
 
