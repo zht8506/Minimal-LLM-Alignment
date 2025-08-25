@@ -21,6 +21,10 @@ $\mathbb{E}_{(x,y_{\text{win}},y_{\text{lose}}) \sim \mathcal{D}}$
 
 $$P(y_w≻y_l)=\frac{e^{λ_{y_w}}}{e^{λ_{y_w}}+e^{λ_{y_l}}}$$
 
+```math
+\mathbb{E}_{(x,y_{\text{win}},y_{\text{lose}}) \sim \mathcal{D}}
+```
+
 其中， $$r_{\phi}$$为Reward Model的打分。
 
 
