@@ -15,6 +15,8 @@ PPO（Proximal Policy Optimization）涉及到Reward Model（RM）的训练和�
 首先介绍RM和PPO的优化目标，部分推导来自[2]。RLHF为两阶段训练，涉及Reward Model和PPO：
 
 
+
+
 # 3 参考资料
 [1] [人人都能看懂的DPO数学原理](https://zhuanlan.zhihu.com/p/721073733) \
 [2] [DPO及其衍生算法XX-O](https://zhuanlan.zhihu.com/p/30274484125) \
