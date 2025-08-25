@@ -31,10 +31,18 @@ $$\mathbb{D}_{KL}(P \parallel Q) =  \sum_{i} P(i) \log \left( \frac{P(i)}{Q(i)} 
 
 
 $$
-\mathbb{D}_{KL}(P \parallel Q)= \sum_{i} P(i) 
+\mathbb{D}_{KL}(P \parallel Q)= \sum_{i} P(i) \log \left( \frac{P(i)}{Q(i)} \right)
 $$
 
 其中， $$r_{\phi}$$为Reward Model的打分。
+
+\begin{aligned}
+L_{p p o} & =\min _{\pi_{\theta}}\left\{\mathbb{E}_{x \sim \mathcal{D}, y \sim \pi_{\theta}(y \mid x)}\left[\log \frac{\pi_{\theta}(y \mid x)}{\pi_{\text {ref }}(y \mid x) e^{r_{\phi}(x, y) / \beta}}\right]\right\} \\
+& =\min _{\pi_{\theta}} \mathbb{E}_{x \sim \mathcal{D}, y \sim \pi_{\theta}(y \mid x)}\left[\log \frac{\pi_{\theta}(y \mid x)}{\frac{1}{Z(x)} \pi_{\text {ref }}(y \mid x) e^{r_{\phi}(x, y) / \beta}}-\log Z(x)\right] \\
+& =\min _{\pi_{\theta}} \mathbb{E}_{x \sim \mathcal{D}, y \sim \pi_{\theta}(y \mid x)}\left[\log \frac{\pi_{\theta}(y \mid x)}{\frac{1}{Z(x)} \pi_{\text {ref }}(y \mid x) e^{r_{\phi}(x, y) / \beta}}\right] \\
+& =\min _{\pi_{\theta}} \mathbb{E}_{x \sim \mathcal{D}, y \sim \pi_{\theta}(y \mid x)}\left[\log \frac{\pi_{\theta}(y \mid x)}{\pi^{*}(y \mid x)}\right] \\
+& =\min _{\pi_{\theta}} \mathbb{E}_{x \sim \mathcal{D}} \mathbb{D}_{K L}\left(\pi_{\theta}(y \mid x) \| \pi^{*}(y \mid x)\right)
+\end{aligned}
 
 
 # 3 参考资料
