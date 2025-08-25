@@ -17,32 +17,8 @@ PPO（Proximal Policy Optimization）涉及到Reward Model（RM）的训练和�
 
 首先介绍RM和PPO的优化目标，部分推导来自[2]。RLHF为两阶段训练，涉及Reward Model和PPO：
 
-$$L_{rm} = \max_{r_\phi} \left\{ \mathbb{E}_{(x, y_{\text{win}}, y_{\text{lose}}) \sim \mathcal{D}} \left[ \log \sigma \left( r_\phi(x, y_{\text{win}}) - r_\phi(x, y_{\text{lose}}) \right) \right] \right\}$$
-
-$$
-L_{ppo} = \max_{\pi_\theta} \left\{ \mathbb{E}_{x \sim \mathcal{D}, y \sim \pi_\theta(y|x)} \left[ r_\phi(x, y) \right] - \beta \mathbb{D}_{KL} \left[ \pi_\theta(y|x) \parallel \pi_{\text{ref}}(y|x) \right] \right\}
-$$
-
-$$KL_{=} \mathbb{D}_{KL}(P \parallel Q) = \sum_{i} P(i) \log \left( \frac{P(i)}{Q(i)} \right)$$
-
-$$\mathbb{D}_{KL}(P \parallel Q) =  $$
-
-$$\mathbb{D}_{KL}(P \parallel Q) =  \sum_{i} P(i) \log \left( \frac{P(i)}{Q(i)} \right)$$
-
-
-$$
-\mathbb{D}_{KL}(P \parallel Q)= \sum_{i} P(i) \log \left( \frac{P(i)}{Q(i)} \right)
-$$
 
 其中， $$r_{\phi}$$为Reward Model的打分。
-
-\begin{aligned}
-L_{p p o} & =\min _{\pi_{\theta}}\left\{\mathbb{E}_{x \sim \mathcal{D}, y \sim \pi_{\theta}(y \mid x)}\left[\log \frac{\pi_{\theta}(y \mid x)}{\pi_{\text {ref }}(y \mid x) e^{r_{\phi}(x, y) / \beta}}\right]\right\} \\
-& =\min _{\pi_{\theta}} \mathbb{E}_{x \sim \mathcal{D}, y \sim \pi_{\theta}(y \mid x)}\left[\log \frac{\pi_{\theta}(y \mid x)}{\frac{1}{Z(x)} \pi_{\text {ref }}(y \mid x) e^{r_{\phi}(x, y) / \beta}}-\log Z(x)\right] \\
-& =\min _{\pi_{\theta}} \mathbb{E}_{x \sim \mathcal{D}, y \sim \pi_{\theta}(y \mid x)}\left[\log \frac{\pi_{\theta}(y \mid x)}{\frac{1}{Z(x)} \pi_{\text {ref }}(y \mid x) e^{r_{\phi}(x, y) / \beta}}\right] \\
-& =\min _{\pi_{\theta}} \mathbb{E}_{x \sim \mathcal{D}, y \sim \pi_{\theta}(y \mid x)}\left[\log \frac{\pi_{\theta}(y \mid x)}{\pi^{*}(y \mid x)}\right] \\
-& =\min _{\pi_{\theta}} \mathbb{E}_{x \sim \mathcal{D}} \mathbb{D}_{K L}\left(\pi_{\theta}(y \mid x) \| \pi^{*}(y \mid x)\right)
-\end{aligned}
 
 
 # 3 参考资料
