@@ -20,12 +20,18 @@ PPO（Proximal Policy Optimization）涉及到Reward Model（RM）的训练和�
 ```math
 L_{rm} = \max_{r_\phi} \left\{ \mathbb{E}_{(x, y_{\text{win}}, y_{\text{lose}}) \sim \mathcal{D}} \left[ \log \sigma \left( r_\phi(x, y_{\text{win}}) - r_\phi(x, y_{\text{lose}}) \right) \right] \right\}
 ```
+
 ```math
 L_{ppo} = \max_{\pi_\theta} \left\{ \mathbb{E}_{x \sim \mathcal{D}, y \sim \pi_\theta(y|x)} \left[ r_\phi(x, y) \right] - \beta \mathbb{D}_{KL} \left[ \pi_\theta(y|x) \parallel \pi_{\text{ref}}(y|x) \right] \right\}
 ```
 
+```math
+\mathbb{D}_{KL}(P \parallel Q)= \sum_{i} P(i) \log \left( \frac{P(i)}{Q(i)} \right)
+```
+
 其中， $$r_{\phi}$$为Reward Model的打分。
 
+- 对于$$L_{rm}$$，x为给定prompt，$$y_{win}$$和$$y_{lose}$$为对应的正负样本，构成数据pair。通过公式可以直观看出其优化目标为拉大正负样本间的距离。公式是经由Bradley-Terry模型而来。
 
 # 3 参考资料
 [1] [人人都能看懂的DPO数学原理](https://zhuanlan.zhihu.com/p/721073733) \
