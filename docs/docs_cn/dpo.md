@@ -31,7 +31,7 @@ $$\mathbb{D}_{KL}(P \parallel Q) =  \sum_{i} P(i) \log \left( \frac{P(i)}{Q(i)} 
 
 
 $$
-\mathbb{D}_{KL}(P \parallel Q)
+\mathbb{D}_{KL}(P \parallel Q)= \sum_{i} P(i) 
 $$
 
 其中， $$r_{\phi}$$为Reward Model的打分。
