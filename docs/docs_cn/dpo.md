@@ -29,11 +29,11 @@ L_{ppo} = \max_{\pi_\theta} \left\{ \mathbb{E}_{x \sim \mathcal{D}, y \sim \pi_\
 \mathbb{D}_{KL}(P \parallel Q)= \sum_{i} P(i) \log \left( \frac{P(i)}{Q(i)} \right)
 ```
 
-其中， $$r_{\phi}$$为Reward Model的打分。
+其中，$r_{\phi}$为Reward Model的打分。
 
 对于$$L_{rm}$$，
 
-$$r_{\phi}$$
+$r_{\phi}$
 
 x为给定prompt，$$y_{win}$$和$$y_{lose}$$为对应的正负样本，构成数据pair。通过公式可以直观看出其优化目标为拉大正负样本间的距离。公式是经由Bradley-Terry模型而来。
 
