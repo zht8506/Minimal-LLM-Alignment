@@ -19,7 +19,7 @@ PPO（Proximal Policy Optimization）涉及到Reward Model（RM）的训练和�
 
 $$\left( \sum_{k=1}^n a_k b_k \right)^2 \leq \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)$$
 
-$$L_{rm} = \max_{r_\phi} \left\{ \mathbb{E}_{(x, y_{\text{win}}, y_{\text{lose}}) \sim \mathcal{D}} \left[ \log \sigma \left( r_\phi(x, y_{\text{win}}) - r_\phi(x, y_{\text{lose}}) \right) \right] \right\}$$
+$$L_{ppo} = \max_{\pi_\theta} \left\{ \mathbb{E}_{x \sim \mathcal{D}, y \sim \pi_\theta(y|x)} \left[ r_\phi(x, y) \right] - \beta \mathbb{D}_{KL} \left[ \pi_\theta(y|x) \parallel \pi_{\text{ref}}(y|x) \right] \right\}$$
 
 其中， $$r_{\phi}$$为Reward Model的打分。
 
