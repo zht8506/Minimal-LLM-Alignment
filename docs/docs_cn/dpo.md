@@ -29,7 +29,7 @@ L_{ppo} = \max_{\pi_\theta} \left\{ \mathbb{E}_{x \sim \mathcal{D}, y \sim \pi_\
 \mathbb{D}_{KL}(P \parallel Q)= \sum_{i} P(i) \log \left( \frac{P(i)}{Q(i)} \right)
 ```
 
-其中，$r_{\phi}$为Reward Model的打分。
+其中，$r_{\phi}$ 为Reward Model的打分。
 
 对于$$L_{rm}$$，
 
