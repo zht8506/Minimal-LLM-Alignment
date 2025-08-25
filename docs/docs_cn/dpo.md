@@ -17,12 +17,11 @@ PPO（Proximal Policy Optimization）涉及到Reward Model（RM）的训练和�
 
 首先介绍RM和PPO的优化目标，部分推导来自[2]。RLHF为两阶段训练，涉及Reward Model和PPO：
 
-$\mathbb{E}_{(x,y_{\text{win}},y_{\text{lose}}) \sim \mathcal{D}}$
-
-$$P(y_w≻y_l)=\frac{e^{λ_{y_w}}}{e^{λ_{y_w}}+e^{λ_{y_l}}}$$
-
 ```math
 L_{rm} = \max_{r_\phi} \left\{ \mathbb{E}_{(x, y_{\text{win}}, y_{\text{lose}}) \sim \mathcal{D}} \left[ \log \sigma \left( r_\phi(x, y_{\text{win}}) - r_\phi(x, y_{\text{lose}}) \right) \right] \right\}
+```
+```math
+L_{ppo} = \max_{\pi_\theta} \left\{ \mathbb{E}_{x \sim \mathcal{D}, y \sim \pi_\theta(y|x)} \left[ r_\phi(x, y) \right] - \beta \mathbb{D}_{KL} \left[ \pi_\theta(y|x) \parallel \pi_{\text{ref}}(y|x) \right] \right\}
 ```
 
 其中， $$r_{\phi}$$为Reward Model的打分。
