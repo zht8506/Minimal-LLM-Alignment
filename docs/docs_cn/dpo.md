@@ -32,7 +32,7 @@ L_{ppo} = \max_{\pi_\theta} \left\{ \mathbb{E}_{x \sim \mathcal{D}, y \sim \pi_\
 其中， $r_{\phi}$ 为Reward Model的打分。
 
 - 对于 $$L_{rm}$$ ，x为给定prompt， $$y_{win}$$ 和 $$y_{lose}$$ 为对应的正负样本，构成数据pair。通过公式可以直观看出其优化目标为拉大正负样本间的距离。公式是经由Bradley-Terry模型而来。
-- 对于 $$L_{ppo}$$ ，其为RLHF中的标准形式， $$\mathbb{D}_{K L}$$  为策略模型 $$\pi_{\theta}(y \mid x)$$ 与初始模型 $$\pi_{ref}(y \mid x)$$ 间的KL散度，整体优化目标为最大化奖励，同时限制 $$\pi_{\theta}(y \mid x)$$ 不要偏离初始模型过多。
+- 对于 $$L_{ppo}$$ ，其为RLHF中的标准形式， $$\mathbb{D}_{KL}$$  为策略模型 $$\pi_{\theta}(y \mid x)$$ 与初始模型 $$\pi_{ref}(y \mid x)$$ 间的KL散度，整体优化目标为最大化奖励，同时限制 $$\pi_{\theta}(y \mid x)$$ 不要偏离初始模型过多。
 
 
 # 3 参考资料
