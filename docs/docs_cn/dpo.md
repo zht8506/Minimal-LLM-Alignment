@@ -12,10 +12,12 @@ PPO（Proximal Policy Optimization）涉及到Reward Model（RM）的训练和�
 在训练奖励模型的过程中，我们就已经在考虑“什么回答是好的，什么回答是不好的”这个问题了。而对齐模型依然是在考虑这个问题 [1]。所以，我们能不能避开奖励模型的训练，直接一步到位训练对齐模型呢？
 
 ## 1.2 Policy model的形式最优解
-（1）RM和PPO优化目标 \
+
+（1）RM和PPO优化目标
+
 首先介绍RM和PPO的优化目标，部分推导来自[2]。RLHF为两阶段训练，涉及Reward Model和PPO：
 
-
+其中， $$r_{\phi}$$为Reward Model的打分。
 
 
 # 3 参考资料
