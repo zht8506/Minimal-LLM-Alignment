@@ -22,7 +22,7 @@ $\mathbb{E}_{(x,y_{\text{win}},y_{\text{lose}}) \sim \mathcal{D}}$
 $$P(y_w≻y_l)=\frac{e^{λ_{y_w}}}{e^{λ_{y_w}}+e^{λ_{y_l}}}$$
 
 ```math
-\mathbb{E}_{(x,y_{\text{win}},y_{\text{lose}}) \sim \mathcal{D}}
+L_{rm} = \max_{r_\phi} \left\{ \mathbb{E}_{(x, y_{\text{win}}, y_{\text{lose}}) \sim \mathcal{D}} \left[ \log \sigma \left( r_\phi(x, y_{\text{win}}) - r_\phi(x, y_{\text{lose}}) \right) \right] \right\}
 ```
 
 其中， $$r_{\phi}$$为Reward Model的打分。
