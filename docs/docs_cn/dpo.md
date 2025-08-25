@@ -31,7 +31,7 @@ L_{ppo} = \max_{\pi_\theta} \left\{ \mathbb{E}_{x \sim \mathcal{D}, y \sim \pi_\
 
 其中， $$r_{\phi}$$为Reward Model的打分。
 
-- 对于$L_{rm}$，x为给定prompt，$$y_{win}$$和$$y_{lose}$$为对应的正负样本，构成数据pair。通过公式可以直观看出其优化目标为拉大正负样本间的距离。公式是经由Bradley-Terry模型而来。
+- 对于$$L$$，x为给定prompt，$$y_{win}$$和$$y_{lose}$$为对应的正负样本，构成数据pair。通过公式可以直观看出其优化目标为拉大正负样本间的距离。公式是经由Bradley-Terry模型而来。
 
 # 3 参考资料
 [1] [人人都能看懂的DPO数学原理](https://zhuanlan.zhihu.com/p/721073733) \
