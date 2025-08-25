@@ -17,6 +17,7 @@ PPO（Proximal Policy Optimization）涉及到Reward Model（RM）的训练和�
 
 首先介绍RM和PPO的优化目标，部分推导来自[2]。RLHF为两阶段训练，涉及Reward Model和PPO：
 
+$$\left( \sum_{k=1}^n a_k b_k \right)^2 \leq \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)$$
 
 其中， $$r_{\phi}$$为Reward Model的打分。
 
