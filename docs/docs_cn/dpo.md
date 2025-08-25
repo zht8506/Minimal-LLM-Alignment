@@ -23,9 +23,7 @@ $$
 L_{ppo} = \max_{\pi_\theta} \left\{ \mathbb{E}_{x \sim \mathcal{D}, y \sim \pi_\theta(y|x)} \left[ r_\phi(x, y) \right] - \beta \mathbb{D}_{KL} \left[ \pi_\theta(y|x) \parallel \pi_{\text{ref}}(y|x) \right] \right\}
 $$
 
-$$
-KL_{=} \mathbb{D}_{KL}(P \parallel Q) = \sum_{i} P(i) \log \left( \frac{P(i)}{Q(i)} \right)
-$$
+$$KL_{=} \mathbb{D}_{KL}(P \parallel Q) = \sum_{i} P(i) \log \left( \frac{P(i)}{Q(i)} \right)$$
 
 其中， $$r_{\phi}$$为Reward Model的打分。
 
