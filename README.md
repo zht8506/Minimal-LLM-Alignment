@@ -19,9 +19,9 @@ Implement popular llm alignment algorithms in PyTorch with minimal lines of code
 | DPO           | offline RL | :white_check_mark: | In Development |
 
 
-## 📊 Dataset
+## 📊 Data Construction Guide
 
-### Huggingface Dataset
+### Using Huggingface Dataset
 
 To help you quickly get started with our project, we support three huggingface datasets for both DPO and SFT. These include:
 
@@ -31,7 +31,7 @@ To help you quickly get started with our project, we support three huggingface d
 
 - ss
 
-### Data Preparation Guide
+### Using Your Own Dataset
 #### 1. SFT Dataset Format
 
 SFT datasets use conversation format, where each sample contains a conversation sequence:
