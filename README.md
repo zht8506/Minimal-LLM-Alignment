@@ -19,6 +19,33 @@ Implement popular llm alignment algorithms in PyTorch with minimal lines of code
 | DPO           | offline RL | :white_check_mark: | In Development |
 
 
+## 📊 Data Construction Guide
+
+### 1. SFT Dataset Format
+
+SFT datasets use conversation format, where each sample contains a conversation sequence:
+
+```json
+[
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a helpful assistant."
+      },
+      {
+        "role": "user",
+        "content": "Describe a process of making crepes."
+      },
+      {
+        "role": "assistant",
+        "content": "Making crepes is an easy and delicious process! Here are step-by-step instructions..."
+      }
+    ]
+  }
+]
+```
+
 ### 2. DPO Dataset Format
 
 DPO datasets contain preference comparison information, where each sample includes:
@@ -43,33 +70,6 @@ DPO datasets contain preference comparison information, where each sample includ
       "from": "gpt",
       "value": "Here are some tips to help you prepare for a job interview..."
     }
-  }
-]
-```
-
-## 📊 Data Construction Guide
-
-### 1. SFT Dataset Format
-
-SFT datasets use conversation format, where each sample contains a conversation sequence:
-
-```json
-[
-  {
-    "messages": [
-      {
-        "role": "system",
-        "content": "You are a helpful assistant."
-      },
-      {
-        "role": "user",
-        "content": "Describe a process of making crepes."
-      },
-      {
-        "role": "assistant",
-        "content": "Making crepes is an easy and delicious process! Here are step-by-step instructions..."
-      }
-    ]
   }
 ]
 ```
