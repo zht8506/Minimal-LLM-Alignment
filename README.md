@@ -15,7 +15,7 @@ Implement popular llm alignment algorithms in PyTorch with minimal lines of code
 
 | Method               |     Type    |    Full   |       LoRA         |
 | ---------------------- | ------------------ | ------------------ | ------------------ |
-| SFT           | SFT | :white_check_mark | In Development | 
+| SFT           | SFT | :white_check_mark: | In Development | 
 | DPO           | offline RL | In Development | In Development |
 
 
