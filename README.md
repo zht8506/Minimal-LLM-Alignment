@@ -11,7 +11,7 @@ Implement popular llm alignment algorithms in PyTorch with minimal lines of code
 
 - ```[2025/8]``` The **Minimal-LLM-Alignment** repository was open-sourced.
 
-## 📊 Supported Methods
+## 🚀 Supported Methods
 
 | Method               |     Type    |    Full   |       LoRA         |
 | ---------------------- | ------------------ | ------------------ | ------------------ |
