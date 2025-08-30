@@ -3,40 +3,6 @@
 
 一个轻量级的大语言模型对齐训练框架，支持SFT（监督微调）和DPO（直接偏好优化）等主流对齐方法。
 
-## 🚀 项目特性
-
-- **多种训练方法支持**: 支持SFT（监督微调）、DPO（直接偏好优化）、IPO（身份偏好优化）等
-- **灵活的数据格式**: 支持自定义数据集和HuggingFace数据集
-- **分布式训练**: 支持FSDP（完全分片数据并行）训练
-- **丰富的评估指标**: 内置多种评估指标和日志记录
-- **易于配置**: 基于YAML的配置文件系统，支持命令行覆盖
-- **实验管理**: 集成WandB和TensorBoard支持
-
-## 📋 目录结构
-
-```
-Minimal-LLM-Alignment/
-├── train.py                 # 主训练脚本
-├── utils.py                 # 工具函数
-├── trainers/                # 训练器实现
-│   ├── base_trainer.py     # 基础训练器
-│   ├── trainer_factory.py  # 训练器工厂
-│   ├── DPO_trainers.py     # DPO训练器
-│   ├── SFT_trainers.py     # SFT训练器
-│   └── loss.py             # 损失函数
-├── dataset/                 # 数据集处理
-│   ├── preference_dataset.py # 偏好数据集
-│   ├── sft_dataset.py      # SFT数据集
-│   ├── data_utils.py       # 数据工具
-│   └── dataset_selector.py # 数据集选择器
-├── example/                 # 配置示例和数据样例
-│   ├── *.yml               # 配置文件示例
-│   ├── *.json              # 数据格式示例
-│   └── change_data.py      # 数据转换脚本
-├── outputs/                 # 输出目录
-└── train.sh                 # 训练脚本示例
-```
-
 ## 🛠️ 安装要求
 
 ### 环境要求
