@@ -16,7 +16,7 @@
 pip install torch transformers datasets accelerate wandb omegaconf
 ```
 
-## 📊 数据构建指南
+## 📊 自定义数据构建
 
 ### 1. SFT数据集格式
 
@@ -72,12 +72,6 @@ DPO数据集包含偏好对比信息，每个样本包含：
 ```
 
 ### 3. 数据转换工具
-
-使用提供的`change_data.py`脚本可以转换不同格式的数据：
-
-```bash
-python example/change_data.py --input_format alpaca --output_format sft --input_file your_data.json --output_file converted_data.json
-```
 
 ## 🚀 使用方法
 
