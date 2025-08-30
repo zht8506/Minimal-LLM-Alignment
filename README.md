@@ -18,8 +18,33 @@ Implement popular llm alignment algorithms in PyTorch with minimal lines of code
 | SFT           | SFT | :white_check_mark: | In Development | 
 | DPO           | offline RL | :white_check_mark: | In Development |
 
+## 📊 Getting Start
 
-## 📊 Data Construction Guide
+## Env
+
+```bash
+conda create --name myenv python=3.10
+pip install -r requirements.txt
+```
+
+## Training
+
+#### SFT Training
+```bash
+python train.py example/qwen2.5-sft.yml
+```
+
+#### DPO Training
+```bash
+python train.py example/qwen2.5-dpo.yml
+```
+### Command Line Parameter Overrides
+
+```bash
+python train.py config.yml --overrides lr=2e-5 batch_size=32
+```
+
+## 📁 Data Construction Guide
 
 ### Using Huggingface Dataset
 
