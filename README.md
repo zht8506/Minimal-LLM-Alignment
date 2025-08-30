@@ -25,11 +25,11 @@ Implement popular llm alignment algorithms in PyTorch with minimal lines of code
 
 To help you quickly get started with our project, we support three huggingface datasets for both DPO and SFT. These include:
 
-- hh:
+- ```Anthropic/hh-rlhf```:
 
-- jj
+- ```stanfordnlp/SHP```:
 
-- ss
+- ```HuggingFaceH4/stack-exchange-preferences```:
 
 ### Using Your Own Dataset
 #### 1. SFT Dataset Format
