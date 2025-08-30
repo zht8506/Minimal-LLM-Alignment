@@ -15,7 +15,6 @@ from omegaconf import DictConfig, OmegaConf
 from utils import get_open_port, disable_dropout, init_distributed, get_output_dir_structure
 from trainers.trainer_factory import get_trainer_class
 
-
 def worker_main(rank: int, world_size: int, config: DictConfig, policy: nn.Module, reference_model: Optional[nn.Module] = None):
     
     # ------------------- initialize wandb configuration -------------------------------#
