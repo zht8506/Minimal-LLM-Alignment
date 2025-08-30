@@ -1,4 +1,7 @@
 # Minimal-LLM-Alignment
+
+\[ English | [中文](README_zh.md) \]
+
 Implement popular llm alignment algorithms in PyTorch with minimal lines of code!
 
 
