@@ -5,15 +5,17 @@
 Implement popular llm alignment algorithms in PyTorch with minimal lines of code!
 
 
-## News
+## 🔥 News
 
-- 🔥 ```[2025/8]``` The **Minimal-LLM-Alignment** repository was open-sourced.
+- ```[2025/9]``` Supports SFT and DPO with easy codes.
 
-## Supported Methods
+- ```[2025/8]``` The **Minimal-LLM-Alignment** repository was open-sourced.
+
+## 📊 Supported Methods
 
 | Method               |     Type    |    Full   |       LoRA         |
 | ---------------------- | ------------------ | ------------------ | ------------------ |
-| SFT           | SFT | In Development | In Development | 
+| SFT           | SFT | :white_check_mark | In Development | 
 | DPO           | offline RL | In Development | In Development |
 
 
