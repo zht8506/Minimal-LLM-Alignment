@@ -4,6 +4,8 @@
 
 Implement popular llm alignment algorithms in PyTorch with minimal lines of code!
 
+Break away from the complex framework and learn the core of the alignment algorithm.
+
 
 ## 🔥 News
 
