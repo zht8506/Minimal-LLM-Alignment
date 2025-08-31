@@ -2,9 +2,9 @@
 
 \[ English | [中文](README_zh.md) \]
 
-Implement popular llm alignment algorithms in PyTorch with minimal lines of code!
+Implement popular llm alignment algorithms **with minimal lines of code**!
 
-Break away from the complex framework and learn the core of the alignment algorithm.
+Break free from complex frameworks and focus on mastering the core logic of llm alignment algorithms.
 
 
 ## 🔥 News
