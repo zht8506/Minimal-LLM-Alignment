@@ -4,7 +4,7 @@
 
 Implement popular llm alignment algorithms **with minimal lines of code**!
 
-Break free from complex frameworks and focus on mastering the core logic of llm alignment algorithms.
+Break free from complex frameworks and focus on the core logic of llm alignment algorithms.
 
 
 ## 🔥 News
