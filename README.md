@@ -1,6 +1,6 @@
 # Minimal-LLM-Alignment
 
-\[ English | [中文](README_zh.md) \]
+\[English | [中文](README_zh.md)\]
 
 Implement popular llm alignment algorithms **with minimal lines of code**!
 
