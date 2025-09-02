@@ -1,0 +1,60 @@
+# Basic configuration
+seed: 0
+exp_name: sft_qwen2.5_example
+# which dataset(s) to train on; can pass a list like datasets=[hh,shp]
+datasets: 
+  - type: custom_dataset
+    path: example/sft_dataset_example.json
+  - type: huggingface_dataset
+    name: hh
+    path: /xxx/data/hh-rlhf # load from huggingface if path=None
+debug: false # debug mode (debug=true will disables wandb, model checkpoint save, etc.)
+
+# TensorBoard configuration
+report_to_tensorboard: true  # Whether to enable TensorBoard logging
+# Wandb configuration
+wandb:
+  enabled: false
+  entity: your_entity
+  project: "Minimal-LLM-Alignment"
+
+# Output directory configuration - all files will be saved here
+output_dirs: ./outputs/${exp_name}
+
+# Evaluation configuration
+do_first_eval: false
+eval_every_steps: 100  # Evaluate every N steps instead of every N examples
+
+# Training parameters
+trainer: BasicTrainer
+optimizer: RMSprop
+lr: 5e-7
+total_batch_size: 2
+eval_batch_size: 8
+gradient_accumulation_steps: 2
+max_grad_norm: 10.0
+max_length: 512
+max_prompt_length: 256
+n_epochs: 1000 # total_steps = (dataset_length × epoch) ÷ batch_size
+warmup_steps: 150
+n_examples: null # total_steps = n_examples ÷ batch_size
+n_eval_examples: 256
+activation_checkpointing: false
+print_log_step: 10  # Print log every N steps
+save_model_step: 10000  # Save model every N steps
+save_optimizer: false  # Whether to save optimizer state dict
+
+# Model configuration
+model:
+  name_or_path: /xxx/pretrained_weight/Qwen2.5-1.5B-Instruct
+  tokenizer_name_or_path: null
+  archive: null
+  policy_dtype: float32
+  reference_dtype: float16
+
+# Loss function configuration - SFT
+loss:
+  name: sft
+  beta: 0.1
+  label_smoothing: 0
+  reference_free: false
