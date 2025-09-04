@@ -22,14 +22,14 @@ Break free from complex frameworks and focus on the core logic of llm alignment 
 
 ## 📊 Getting Start
 
-## Env
+### Env
 
 ```bash
 conda create --name myenv python=3.10
 pip install -r requirements.txt
 ```
 
-## Training
+### Training
 
 #### SFT Training
 ```bash
@@ -40,7 +40,7 @@ python train.py example/qwen2.5-sft.yml
 ```bash
 python train.py example/qwen2.5-dpo.yml
 ```
-### Command Line Parameter Overrides
+#### Command Line Parameter Overrides
 
 ```bash
 python train.py config.yml --overrides lr=2e-5 batch_size=32
@@ -107,8 +107,8 @@ DPO datasets contain preference comparison information, where each sample includ
 ```
 
 
-## 🎯 Awesome LLM Alignment Methods
-Note: Some algorithms lack official implementations; hence, I adopt the excellent open-source version.
+## 🎯 领先的 LLM 对齐方法
+注意：部分算法缺乏官方实现，因此我采用了优秀的开源版本。
 
 ### Offline RL
 | **Release** | **Method** | **Reference** | **Notes** | **Link** |
