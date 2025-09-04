@@ -107,8 +107,8 @@ DPO datasets contain preference comparison information, where each sample includ
 ```
 
 
-## 🎯 领先的 LLM 对齐方法
-注意：部分算法缺乏官方实现，因此我采用了优秀的开源版本。
+## 🎯 Awesome LLM Alignment Methods
+Note: Some algorithms lack official implementations; hence, I adopt the excellent open-source version.
 
 ### Offline RL
 | **Release** | **Method** | **Reference** | **Notes** | **Link** |
