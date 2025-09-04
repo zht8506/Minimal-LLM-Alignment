@@ -11,20 +11,36 @@
 
 - ```[2025/8]``` **Minimal-LLM-Alignment**开源.
 
-## 🛠️ 安装要求
-
-### 环境要求
-- Python 3.8+
-- PyTorch 2.0+
-- Transformers 4.20+
-- CUDA 11.8+ (GPU训练)
+## 📊 开始
 
 ### 安装依赖
 ```bash
-pip install torch transformers datasets accelerate wandb omegaconf
+conda create --name myenv python=3.10
+pip install -r requirements.txt
+```
+### 训练
+
+#### SFT训练
+```bash
+python train.py example/qwen2.5-sft.yml
 ```
 
-## 📊 自定义数据构建
+#### DPO训练
+```bash
+python train.py example/qwen2.5-dpo.yml
+```
+#### 命令行覆盖
+
+```bash
+python train.py config.yml --overrides lr=2e-5 batch_size=32
+```
+
+## 📁 数据构建方式
+
+### 使用huggingface数据
+
+为了快速上手我们的项目，我们支持三个 huggingface 数据集，可以用来进行DPO和SFT训练。这些数据集包括： ```Anthropic/hh-rlhf```([link](https://huggingface.co/datasets/Anthropic/hh-rlhf))、```stanfordnlp/SHP```([link](https://huggingface.co/datasets/stanfordnlp/SHP))、```HuggingFaceH4/stack-exchange-preferences```([link](https://huggingface.co/datasets/HuggingFaceH4/stack-exchange-preferences)).
+
 
 ### 1. SFT数据集格式
 
@@ -79,133 +95,26 @@ DPO数据集包含偏好对比信息，每个样本包含：
 ]
 ```
 
-### 3. 数据转换工具
 
-## 🚀 使用方法
+## 🎯 领先的 LLM 对齐方法
+注意：部分算法缺乏官方实现，因此我采用了优秀的开源版本。
 
-### 1. 基础训练
+### Offline RL
+| **Release** | **Method** | **Reference** | **Notes** | **Link** |
+| --- | --- | --- | --- | --- |
+| 2023/05 | **DPO** | Direct preference optimization: Your language model is secretly a reward model | NeurIPS 2023 | [paper](https://arxiv.org/abs/2305.18290)/[code](https://github.com/eric-mitchell/direct-preference-optimization)|
+| 2023/10 | **IPO** | A General Theoretical Paradigm to Understand Learning from Human Preferences | AISTATS 2024 | [paper](https://arxiv.org/abs/2310.12036)|
+| 2024/02 | **KTO** | KTO: Model Alignment as Prospect Theoretic Optimization | ICML 2024 | [paper](https://arxiv.org/abs/2402.01306)/[code](https://github.com/ContextualAI/HALOs)|
+| 2024/03 | **ORPO** | Orpo: Monolithic preference optimization without reference model | EMNLP 2024 | [paper](https://arxiv.org/abs/2403.07691)/[code](https://github.com/xfactlab/orpo)|
+| 2024/05 | **SimPO** | Simpo: Simple preference optimization with a reference-free reward | NeurIPS 2024 | [paper](https://arxiv.org/abs/2405.14734)/[code](https://github.com/princeton-nlp/SimPO)|
 
-#### SFT训练
-```bash
-python train.py example/pythia28-sft.yml
-```
+### Online RL
+| **Release** | **Method** | **Reference** | **Notes** | **Link** |
+| --- | --- | --- | --- | --- |
+| 2017/07 | **PPO** | Proximal Policy Optimization Algorithms | Arxiv | [paper](https://arxiv.org/abs/1707.06347)/[code](https://github.com/nikhilbarhate99/PPO-PyTorch) |
+| 2017/07 | **GRPO** | Deepseekmath: Pushing the limits of mathematical reasoning in open language models | Arxiv | [paper](https://arxiv.org/abs/2402.03300)/[code](https://github.com/lsdefine/simple_GRPO) |
 
-#### DPO训练
-```bash
-python train.py example/pythia28-dpo.yml
-```
 
-### 2. 自定义配置
 
-创建自定义配置文件：
 
-```yaml
-# 基础配置
-seed: 0
-exp_name: my_experiment
-datasets: 
-  - type: custom_dataset
-    path: path/to/your/dataset.json
 
-# 训练参数
-trainer: BasicTrainer
-optimizer: AdamW
-lr: 1e-5
-total_batch_size: 16
-gradient_accumulation_steps: 4
-max_length: 512
-n_epochs: 100
-
-# 模型配置
-model:
-  name_or_path: your/model/path
-  policy_dtype: float16
-
-# 损失函数配置
-loss:
-  name: dpo  # 或 sft
-  beta: 0.1  # DPO参数
-```
-
-### 3. 命令行参数覆盖
-
-```bash
-python train.py config.yml --overrides lr=2e-5 batch_size=32
-```
-
-### 4. 分布式训练
-
-使用FSDP训练器进行分布式训练：
-
-```bash
-python train.py config.yml --overrides trainer=FSDPTrainer
-```
-
-## 📁 配置文件详解
-
-### 主要配置项
-
-- **基础配置**: 实验名称、随机种子、调试模式
-- **数据集配置**: 数据集类型、路径、加载方式
-- **训练配置**: 学习率、批次大小、优化器、训练步数
-- **模型配置**: 模型路径、数据类型、检查点加载
-- **损失配置**: 损失函数类型、参数设置
-- **输出配置**: 输出目录、日志记录、模型保存
-
-### 环境变量
-
-- `WANDB_CACHE_DIR`: WandB缓存目录
-- `XDG_CACHE_HOME`: 临时文件缓存目录
-
-## 🔧 高级功能
-
-### 1. 模型检查点加载
-
-```yaml
-model:
-  archive: path/to/checkpoint.pt  # 加载预训练权重
-```
-
-### 2. 梯度累积
-
-```yaml
-gradient_accumulation_steps: 4  # 梯度累积步数
-```
-
-### 3. 激活检查点
-
-```yaml
-activation_checkpointing: true  # 启用激活检查点以节省内存
-```
-
-### 4. 混合精度训练
-
-```yaml
-model:
-  policy_dtype: bfloat16  # 使用混合精度训练
-```
-
-## 📈 监控和评估
-
-### 1. WandB集成
-
-```yaml
-wandb:
-  enabled: true
-  entity: your_entity
-  project: "Minimal-LLM-Alignment"
-```
-
-### 2. TensorBoard支持
-
-```yaml
-report_to_tensorboard: true
-```
-
-### 3. 评估配置
-
-```yaml
-do_first_eval: false
-eval_every_steps: 100
-n_eval_examples: 256
-```
