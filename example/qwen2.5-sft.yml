@@ -55,6 +55,3 @@ model:
 # Loss function configuration - SFT
 loss:
   name: sft
-  beta: 0.1
-  label_smoothing: 0
-  reference_free: false
