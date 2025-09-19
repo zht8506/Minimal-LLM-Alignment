@@ -52,6 +52,8 @@ python train.py config.yml --overrides lr=2e-5 batch_size=32
 
 To help you quickly get started with our project, we support three huggingface datasets for both DPO and SFT. These include: ```Anthropic/hh-rlhf```([link](https://huggingface.co/datasets/Anthropic/hh-rlhf))、```stanfordnlp/SHP```([link](https://huggingface.co/datasets/stanfordnlp/SHP))、```HuggingFaceH4/stack-exchange-preferences```([link](https://huggingface.co/datasets/HuggingFaceH4/stack-exchange-preferences)).
 
+In addition, we also support building your own dataset for alignment training.
+
 ### Using Your Own Dataset
 #### 1. SFT Dataset Format
 
