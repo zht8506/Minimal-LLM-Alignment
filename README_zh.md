@@ -41,6 +41,8 @@ python train.py config.yml --overrides lr=2e-5 batch_size=32
 
 为了快速上手我们的项目，我们支持三个 huggingface 数据集，可以用来进行DPO和SFT训练。这些数据集包括： ```Anthropic/hh-rlhf```([link](https://huggingface.co/datasets/Anthropic/hh-rlhf))、```stanfordnlp/SHP```([link](https://huggingface.co/datasets/stanfordnlp/SHP))、```HuggingFaceH4/stack-exchange-preferences```([link](https://huggingface.co/datasets/HuggingFaceH4/stack-exchange-preferences)).
 
+此外，我们还支持自己构建数据集进行对齐训练。
+
 
 ### 1. SFT数据集格式
 
