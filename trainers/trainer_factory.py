@@ -1,8 +1,8 @@
 from typing import Optional, Dict, Any
 from omegaconf import DictConfig
 
-from trainers.DPO_trainers import DPOTrainer
-from trainers.SFT_trainers import SFTTrainer
+from trainers.DPO_trainer import DPOTrainer
+from trainers.SFT_trainer import SFTTrainer
 
 
 def get_trainer_class(config: DictConfig) -> type:
