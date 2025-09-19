@@ -2,9 +2,5 @@ I used the first 10,000 samples from the ```Anthropic/hh-rlhf```([link](https://
 
 ### Training loss curve
 
-[NPU user group](assets/sft_training_loss.png)
-
-!(GitHub头像)(assets/sft_training_loss.png)
-
-<img width="50%" alt="image" src="../assets/sft_training_loss.png" />
+<img width="10%" alt="image" src="../assets/sft_training_loss.png" />
 
