@@ -46,7 +46,7 @@ save_optimizer: false  # Whether to save optimizer state dict
 
 # Model configuration
 model:
-  name_or_path: /xxx/pretrained_weight/Qwen2.5-7B-Instruct
+  name_or_path: /xxx/pretrained_weight/Qwen2.5-1.5B-Instruct
   tokenizer_name_or_path: null
   archive: null
   policy_dtype: float32
