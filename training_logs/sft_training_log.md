@@ -2,7 +2,7 @@ I used the first 10,000 samples from the ```Anthropic/hh-rlhf```([link](https://
 
 ### Training loss curve
 
-The training loss curve is as follows. We can observe that the loss can and converge normally.
+The training loss curve is as follows. We can observe that the loss can converge normally.
 
 <img width="50%" alt="image" src="../assets/sft_training_loss.png" />
 
