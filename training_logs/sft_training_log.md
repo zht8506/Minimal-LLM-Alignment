@@ -5,3 +5,6 @@ I used the first 10,000 samples from the ```Anthropic/hh-rlhf```([link](https://
 [NPU user group](assets/sft_training_loss.png)
 
 !(GitHub头像)(assets/sft_training_loss.png)
+
+<img width="522" height="389" alt="image" src="assets/sft_training_loss.png" />
+
