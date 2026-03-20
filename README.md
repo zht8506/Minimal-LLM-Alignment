@@ -2,23 +2,19 @@
 
 \[English | [中文](README_zh.md)\]
 
-Implement popular llm alignment algorithms **with minimal lines of code**!
+Implement popular LLM post-training algorithms in PyTorch with easy code!
 
-Break free from complex frameworks and focus on the core logic of llm alignment algorithms.
+Break free from complex frameworks and focus on the core logic of LLM alignment algorithms.
 
 
-## 🔥 News
 
-- ```[2025/9]``` Supports SFT and DPO with easy codes.
+## 🚀 Supported Algorithms
 
-- ```[2025/8]``` The **Minimal-LLM-Alignment** repository was open-sourced.
-
-## 🚀 Supported Methods
-
-| Method               |     Type    |    Full   |       LoRA         |
-| ---------------------- | ------------------ | ------------------ | ------------------ |
-| SFT           | SFT | :white_check_mark: | In Development | 
-| DPO           | offline RL | :white_check_mark: | In Development |
+- Supervised Fine-Tuning (SFT)
+- Direct Fine-Tuning (DFT)
+- Direct Preference Optimization (DPO)
+- Group Relative Policy Optimization (GRPO)
+- More coming soon
 
 ## 📊 Getting Start
 
