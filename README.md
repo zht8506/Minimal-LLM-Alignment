@@ -1,4 +1,4 @@
-# Minimal-LLM-Alignment
+# Easy-LLM-Post-Training
 
 \[English | [中文](README_zh.md)\]
 
