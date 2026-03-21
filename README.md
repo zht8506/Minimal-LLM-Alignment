@@ -6,9 +6,9 @@ Implement popular LLM post-training algorithms in PyTorch with easy code!
 
 以简洁代码，基于 PyTorch 实现主流大模型后训练算法！
 
-Break free from complex frameworks and focus on the core logic of LLM alignment algorithms.
+Break free from complex frameworks and focus on the core logic of LLM post training algorithms.
 
-摆脱繁杂框架束缚，专注于大模型对齐算法的核心逻辑。
+摆脱繁杂框架束缚，专注于大模型后训练算法的核心逻辑。
 
 
 ## 🚀 Supported Algorithms
