@@ -14,7 +14,7 @@ Break free from complex frameworks and focus on the core logic of LLM post train
 ## 🚀 Supported Algorithms
 
 - Supervised Fine-Tuning (SFT)
-- Direct Fine-Tuning (DFT) [Paper](https://arxiv.org/abs/2508.05629)]
+- Direct Fine-Tuning (DFT) [[Paper](https://arxiv.org/abs/2508.05629)]
 - Direct Preference Optimization (DPO)
 - Group Relative Policy Optimization (GRPO)
 - More coming soon
