@@ -184,7 +184,7 @@ class SFTTrainer(BaseTrainer):
         return loss
 
 def parse_args():
-    parser = argparse.ArgumentParser(description="A minimal SFT trainer with custom training loop.")
+    parser = argparse.ArgumentParser(description="SFT trainer.")
     parser.add_argument("--model_path", type=str, required=True, help="Path to Model file.")
     parser.add_argument("--train_json", type=str, required=True, help="Path to SFT json file.")
     parser.add_argument("--output_dir", type=str, default="./outputs/simple-sft")
