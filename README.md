@@ -28,83 +28,17 @@ conda create --name myenv python=3.10
 pip install -r requirements.txt
 ```
 
+### Data
+
+You can get started quickly using the sample data in the ```data```, including SFT data, DPO data, etc.
+
 ### Training
 
-#### SFT Training
-```bash
-python train.py example/qwen2.5-sft.yml
-```
-
-#### DPO Training
-```bash
-python train.py example/qwen2.5-dpo.yml
-```
-#### Command Line Parameter Overrides
+Taking SFT as an example:
 
 ```bash
-python train.py config.yml --overrides lr=2e-5 batch_size=32
-```
-
-## 📁 Data Construction Guide
-
-### Using Huggingface Dataset
-
-To help you quickly get started with our project, we support three huggingface datasets for both DPO and SFT. These include: ```Anthropic/hh-rlhf```([link](https://huggingface.co/datasets/Anthropic/hh-rlhf))、```stanfordnlp/SHP```([link](https://huggingface.co/datasets/stanfordnlp/SHP))、```HuggingFaceH4/stack-exchange-preferences```([link](https://huggingface.co/datasets/HuggingFaceH4/stack-exchange-preferences)).
-
-In addition, we also support building your own dataset for alignment training.
-
-### Using Your Own Dataset
-#### 1. SFT Dataset Format
-
-SFT datasets use conversation format, where each sample contains a conversation sequence:
-
-```json
-[
-  {
-    "messages": [
-      {
-        "role": "system",
-        "content": "You are a helpful assistant."
-      },
-      {
-        "role": "user",
-        "content": "Describe a process of making crepes."
-      },
-      {
-        "role": "assistant",
-        "content": "Making crepes is an easy and delicious process! Here are step-by-step instructions..."
-      }
-    ]
-  }
-]
-```
-
-#### 2. DPO Dataset Format
-
-DPO datasets contain preference comparison information, where each sample includes:
-- `conversations`: Conversation context
-- `chosen`: Preferred response
-- `rejected`: Non-preferred response
-
-```json
-[
-  {
-    "conversations": [
-      {
-        "from": "human",
-        "value": "How can I best prepare for a job interview?"
-      }
-    ],
-    "chosen": {
-      "from": "gpt",
-      "value": "Preparing for a job interview requires a combination of research, practice, and self-reflection..."
-    },
-    "rejected": {
-      "from": "gpt",
-      "value": "Here are some tips to help you prepare for a job interview..."
-    }
-  }
-]
+cd sft/
+bash train.sh
 ```
 
 
