@@ -82,8 +82,14 @@ class BaseTrainer:
         updates_step_per_epoch = max(1, ceil(len(self.train_loader) / args.gradient_accumulation_steps))
 
         self.total_optimizer_steps = updates_step_per_epoch * args.num_train_epochs
-        self.scheduler = torch.optim.lr_scheduler.LinearLR(self.optimizer, start_factor=0.1, end_factor=1.0, total_iters=args.warmup_ratio * self.total_optimizer_steps)
 
+        self.scheduler = torch.optim.lr_scheduler.LinearLR(
+            self.optimizer,
+            start_factor=args.warmup_start_factor,
+            end_factor=1.0,
+            total_iters=args.warmup_ratio * self.total_optimizer_steps,
+        )
+        
         self.log_file = os.path.join(args.output_dir, "train_log.jsonl")
         os.makedirs(args.output_dir, exist_ok=True)
 
@@ -168,7 +174,7 @@ class DFTTrainer(BaseTrainer):
 
 
 def parse_args():
-    parser = argparse.ArgumentParser(description="A minimal SFT trainer with custom training loop.")
+    parser = argparse.ArgumentParser(description="SFT trainer.")
     parser.add_argument("--model_path", type=str, required=True, help="Path to Model file.")
     parser.add_argument("--train_json", type=str, required=True, help="Path to SFT json file.")
     parser.add_argument("--output_dir", type=str, default="./outputs/simple-sft")
