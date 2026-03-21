@@ -5,96 +5,34 @@
 
 从繁杂的框架中脱离，学习对齐算法的核心。
 
-## 🔥 最新
+## 🚀 支持的算法
 
-- ```[2025/9]``` 支持SFT和DPO，代码简洁。
-
-- ```[2025/8]``` **Minimal-LLM-Alignment**开源.
+- Supervised Fine-Tuning (SFT)
+- Dynamic Fine-Tuning (DFT)
+- Direct Preference Optimization (DPO)
+- Group Relative Policy Optimization (GRPO)
+- 敬请期待
 
 ## 📊 开始
 
-### 安装依赖
+### 环境
+
 ```bash
 conda create --name myenv python=3.10
 pip install -r requirements.txt
 ```
-### 训练
 
-#### SFT训练
-```bash
-python train.py example/qwen2.5-sft.yml
-```
+### 数据
 
-#### DPO训练
-```bash
-python train.py example/qwen2.5-dpo.yml
-```
-#### 命令行覆盖
+您可以利用```data```中的示例数据快速开始，包括SFT数据、DPO数据等。
+
+### Training
+
+以SFT为例：
 
 ```bash
-python train.py config.yml --overrides lr=2e-5 batch_size=32
-```
-
-## 📁 数据构建方式
-
-### 使用huggingface数据
-
-为了快速上手我们的项目，我们支持三个 huggingface 数据集，可以用来进行DPO和SFT训练。这些数据集包括： ```Anthropic/hh-rlhf```([link](https://huggingface.co/datasets/Anthropic/hh-rlhf))、```stanfordnlp/SHP```([link](https://huggingface.co/datasets/stanfordnlp/SHP))、```HuggingFaceH4/stack-exchange-preferences```([link](https://huggingface.co/datasets/HuggingFaceH4/stack-exchange-preferences)).
-
-此外，我们还支持自己构建数据集进行对齐训练。
-
-
-### 1. SFT数据集格式
-
-SFT数据集使用对话格式，每个样本包含一个对话序列：
-
-```json
-[
-  {
-    "messages": [
-      {
-        "role": "system",
-        "content": "You are a helpful assistant."
-      },
-      {
-        "role": "user",
-        "content": "Describe a process of making crepes."
-      },
-      {
-        "role": "assistant",
-        "content": "Making crepes is an easy and delicious process! Here are step-by-step instructions..."
-      }
-    ]
-  }
-]
-```
-
-### 2. DPO数据集格式
-
-DPO数据集包含偏好对比信息，每个样本包含：
-- `conversations`: 对话上下文
-- `chosen`: 偏好回答
-- `rejected`: 非偏好回答
-
-```json
-[
-  {
-    "conversations": [
-      {
-        "from": "human",
-        "value": "How can I best prepare for a job interview?"
-      }
-    ],
-    "chosen": {
-      "from": "gpt",
-      "value": "Preparing for a job interview requires a combination of research, practice, and self-reflection..."
-    },
-    "rejected": {
-      "from": "gpt",
-      "value": "Here are some tips to help you prepare for a job interview..."
-    }
-  }
-]
+cd sft/
+bash train.sh
 ```
 
 
