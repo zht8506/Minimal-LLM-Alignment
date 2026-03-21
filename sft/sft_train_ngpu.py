@@ -78,8 +78,13 @@ class BaseTrainer:
 
         self.total_optimizer_steps = updates_step_per_epoch * args.num_train_epochs
 
-        self.scheduler = torch.optim.lr_scheduler.LinearLR(self.optimizer, start_factor=args.warmup_start_factor, end_factor=1.0, total_iters=args.warmup_ratio * self.total_optimizer_steps)
-
+        self.scheduler = torch.optim.lr_scheduler.LinearLR(
+            self.optimizer,
+            start_factor=args.warmup_start_factor,
+            end_factor=1.0,
+            total_iters=args.warmup_ratio * self.total_optimizer_steps,
+        )
+        
         self.log_file = os.path.join(args.output_dir, "train_log.jsonl")
         os.makedirs(args.output_dir, exist_ok=True)
     
