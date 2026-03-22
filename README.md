@@ -19,6 +19,7 @@ Break free from complex frameworks and focus on the core logic of LLM post train
 
 ## 🔄 Upcoming Methods
 - Simple Preference Optimization (**SimPO**)
+- Proximal Policy Optimization (**PPO**)
 - Group Relative Policy Optimization (**GRPO**)
 - Group Sequence Policy Optimization (**GSPO**)
 - Group Relative Policy Optimization Done Right (**Dr.GRPO**)
