@@ -185,18 +185,22 @@ class SFTTrainer(BaseTrainer):
 
 def parse_args():
     parser = argparse.ArgumentParser(description="SFT trainer.")
+    # paths
     parser.add_argument("--model_path", type=str, required=True, help="Path to Model file.")
     parser.add_argument("--train_json", type=str, required=True, help="Path to SFT json file.")
     parser.add_argument("--output_dir", type=str, default="./outputs/simple-sft")
+    # hyper-params
     parser.add_argument("--max_length", type=int, default=2048)
     parser.add_argument("--num_train_epochs", type=int, default=1)
     parser.add_argument("--per_device_train_batch_size", type=int, default=1)
     parser.add_argument("--gradient_accumulation_steps", type=int, default=8)
+    # optimizer
     parser.add_argument("--learning_rate", type=float, default=2e-5)
     parser.add_argument("--weight_decay", type=float, default=0.0)
     parser.add_argument("--warmup_ratio", type=float, default=0.0)
     parser.add_argument("--warmup_start_factor", type=float, default=1.0)
     parser.add_argument("--max_grad_norm", type=float, default=1.0)
+    # misc
     parser.add_argument("--logging_steps", type=int, default=5)
     parser.add_argument("--save_steps", type=int, default=1000000)
     parser.add_argument("--num_workers", type=int, default=0)
