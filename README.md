@@ -18,9 +18,9 @@ Break free from complex frameworks and focus on the core logic of LLM post train
 - Direct Preference Optimization (DPO) [[Paper](https://arxiv.org/abs/2305.18290)]
 
 🔄 Upcoming Methods
-- Simple Preference Optimization (SimPO)
-- Group Relative Policy Optimization (GRPO)
-- Group Sequence Policy Optimization (GSPO)
+- Simple Preference Optimization (**SimPO**)
+- Group Relative Policy Optimization (**GRPO**)
+- Group Sequence Policy Optimization (**GSPO**)
 - More coming soon
 
 ## 📊 Getting Start
