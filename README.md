@@ -21,6 +21,7 @@ Break free from complex frameworks and focus on the core logic of LLM post train
 - Simple Preference Optimization (**SimPO**)
 - Group Relative Policy Optimization (**GRPO**)
 - Group Sequence Policy Optimization (**GSPO**)
+- Group Relative Policy Optimization Done Right (**Dr.GRPO**)
 - More coming soon
 
 ## 📊 Getting Start
