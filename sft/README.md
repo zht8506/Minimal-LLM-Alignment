@@ -1,6 +1,6 @@
 # SFT
 
-Simple code for SFT training.
+This is a simplified implementation of SFT, supporting single-GPU and multi-GPU training.
 
 ```
 sft/
@@ -10,7 +10,7 @@ sft/
 └── train.sh  # start SFT
 ```
 
-Train LLM with SFT:
+Train LLM using SFT (including single-GPU and multi-GPU training versions):
 
 ```bash
 bash train.sh
