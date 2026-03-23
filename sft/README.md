@@ -13,6 +13,5 @@ sft/
 Train LLM with SFT:
 
 ```bash
-cd sft/
 bash train.sh
 ```
