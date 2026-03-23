@@ -10,7 +10,7 @@ Dft/
 └── train.sh  # start DFT
 ```
 
-Train LLM with DFT:
+Train LLM using DFT (including single-GPU and multi-GPU training versions):
 
 ```bash
 bash train.sh
