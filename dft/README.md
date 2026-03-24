@@ -1,5 +1,7 @@
 # DFT
 
+On the Generalization of SFT: A Reinforcement Learning Perspective with Reward Rectification
+
 This is a simplified implementation of [DFT](https://arxiv.org/abs/2508.05629), supporting single-GPU and multi-GPU training.
 
 ```
