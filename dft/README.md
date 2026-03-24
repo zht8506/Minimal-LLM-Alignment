@@ -2,7 +2,7 @@
 
 > [On the Generalization of SFT: A Reinforcement Learning Perspective with Reward Rectification](https://arxiv.org/abs/2508.05629)
 
-The paper propose the Dynamic Fine-Tuning (DFT), which stabilizes gradient updates for each token by dynamically rescaling the objective function using the token’s probability.
+The paper propose the **Dynamic Fine-Tuning (DFT)**, which stabilizes gradient updates for each token by dynamically rescaling the objective function using the token’s probability.
 
 This is a simplified implementation of DFT, supporting single-GPU and multi-GPU training.
 
