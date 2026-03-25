@@ -9,7 +9,7 @@ dataset_path=$SCRIPT_DIR/data/sft_en_demo.json
 output_dir=$SCRIPT_DIR/output_dir
 
 # single gpu training
-python "$SCRIPT_DIR/sft_train_ngpu.py" \
+python "$SCRIPT_DIR/sft_train.py" \
   --model_path $model_path \
   --train_json $dataset_path \
   --output_dir $output_dir \
