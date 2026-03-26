@@ -16,6 +16,7 @@ Break free from complex frameworks and focus on the core logic of LLM post train
 - Supervised Fine-Tuning (**SFT**) [[Code](https://github.com/zht8506/Easy-LLM-Post-Training/tree/main/sft)]
 - Dynamic Fine-Tuning (**DFT**) [[Paper](https://arxiv.org/abs/2508.05629) | [Code](https://github.com/zht8506/Easy-LLM-Post-Training/tree/main/dft)]
 - Direct Preference Optimization (**DPO**) [[Paper](https://arxiv.org/abs/2305.18290)]
+- Proximal Policy Optimization (**PPO**) [[Paper](https://arxiv.org/abs/1707.06347) | [Code](https://github.com/zht8506/Easy-LLM-Post-Training/tree/main/ppo)]
 
 ## 🔄 Upcoming Methods
 - Simple Preference Optimization (**SimPO**)
