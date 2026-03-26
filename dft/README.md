@@ -4,7 +4,7 @@
 
 The paper propose the **Dynamic Fine-Tuning (DFT)**, which stabilizes gradient updates for each token by dynamically rescaling the objective function using the token’s probability.
 
-This is a simplified implementation of DFT, supporting single-GPU and multi-GPU training.
+This is a simplified implementation of DFT, supporting single-GPU and multi-GPU training. We use ``data/sft_en_demo.json`` as the demo dataset for DFT.
 
 ```
 Dft/
