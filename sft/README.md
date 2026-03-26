@@ -1,6 +1,6 @@
 # SFT
 
-This is a simplified implementation of SFT, supporting single-GPU and multi-GPU training. We use ``data/sft_en_demo.json`` as the demo sft dataset.
+This is a simplified implementation of SFT, supporting single-GPU and multi-GPU training. We use ``data/sft_en_demo.json`` as the demo dataset for SFT.
 
 ```
 sft/
