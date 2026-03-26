@@ -1,6 +1,6 @@
 # DPO
 
-This is a simplified implementation of DPO, supporting single-GPU and multi-GPU training.
+This is a simplified implementation of DPO, supporting single-GPU and multi-GPU training. We use ``data/dpo_en_demo.json`` as the demo dataset for DPO.
 
 ```
 sft/
