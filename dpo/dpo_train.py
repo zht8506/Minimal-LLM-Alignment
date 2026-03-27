@@ -14,10 +14,12 @@ from contextlib import nullcontext
 from torch.utils.data import DataLoader
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-DATA_PATH = Path(__file__).parent.parent / "datasets"
-sys.path.insert(0, str(DATA_PATH))
+# Ensure local dataset module can be imported no matter where this script is launched.
+CURRENT_DIR = Path(__file__).resolve().parent
+if str(CURRENT_DIR) not in sys.path:
+    sys.path.insert(0, str(CURRENT_DIR))
 
-from dpo_dataset import DPODataCollator, JsonDPODataset
+from dpo_dataset import JsonDPODataset, DPODataCollator
 
 
 def _get_batch_logps(
