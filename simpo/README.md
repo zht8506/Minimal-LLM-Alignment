@@ -4,7 +4,7 @@
 
 SimPO takes the average log probability of a sequence as an implicit reward to dispense with a reference model and adds a target reward margin to the Bradley-Terry objective to boost performance.
 
-This is a simplified implementation of SimPO, supporting single-GPU and multi-GPU training. We use ``data/dpo_en_demo.json`` as the demo dataset for DFT.
+This is a simplified implementation of SimPO, supporting single-GPU and multi-GPU training. We use ``data/dpo_en_demo.json`` as the demo dataset for SimPO.
 
 ```
 simpo/
