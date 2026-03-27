@@ -299,11 +299,6 @@ def main():
         trust_remote_code=True,
         torch_dtype="auto",
     )
-    ref_model = AutoModelForCausalLM.from_pretrained(
-        args.model_path,
-        trust_remote_code=True,
-        torch_dtype="auto",
-    )
     tokenizer = AutoTokenizer.from_pretrained(args.model_path, trust_remote_code=True)
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
