@@ -23,6 +23,9 @@ from dpo_dataset import DPODataCollator, JsonDPODataset
 def _get_batch_logps(
     logits: torch.FloatTensor, labels: torch.LongTensor, average_log_prob: bool = False
 ) -> torch.FloatTensor:
+    """
+    Calculate the GT label log probabilities of each sample.
+    """
     assert logits.shape[:-1] == labels.shape
     labels = labels[:, 1:].clone()
     logits = logits[:, :-1, :]
