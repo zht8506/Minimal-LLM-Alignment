@@ -1,4 +1,4 @@
-# SIMPO
+# SimPO
 
 > [SimPO: Simple Preference Optimization with a Reference-Free Reward](https://arxiv.org/abs/2405.14734)
 
