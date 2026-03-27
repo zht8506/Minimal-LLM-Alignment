@@ -1,8 +1,6 @@
 # GRPO
 
-Simple GRPO (Group Relative Policy Optimization) Training for LLM.
+> [DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models](https://arxiv.org/abs/2402.03300)
 
-Key differences from PPO:
-  - No critic / value model — advantages come from group-relative reward normalization.
-  - Each prompt generates G responses (a "group"); rewards are normalized within the group.
-  - Policy update uses PPO-clip objective + KL penalty with a frozen reference model.
+GRPO (Group Relative Policy Optimization) abandons the critic model in PPO, estimates the baseline from group rollout to calculate the advantage, adds KL divergence regularization directly to the loss, significantly reduces the memory and computational overhead of training.
+
