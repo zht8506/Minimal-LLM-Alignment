@@ -11,7 +11,7 @@ eval_dataset_path=$SCRIPT_DIR/data/gsm8k_test_1of8.json
 output_dir=$SCRIPT_DIR/output_dir
 
 # single gpu training
-python "$SCRIPT_DIR/sft_train.py" \
+python "$SCRIPT_DIR/ppo_train.py" \
   --model_path $model_path \
   --train_json $train_dataset_path \
   --eval_json $eval_dataset_path \
