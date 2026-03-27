@@ -21,7 +21,6 @@ Break free from complex frameworks and focus on the core logic of LLM post train
 - Group Relative Policy Optimization (**GRPO**) [[Paper](https://arxiv.org/abs/2402.03300) | [Code](https://github.com/zht8506/Easy-LLM-Post-Training/tree/main/grpo)]
 
 ## 🔄 Upcoming Methods
-- Simple Preference Optimization (**SimPO**)
 - Group Sequence Policy Optimization (**GSPO**)
 - Group Relative Policy Optimization Done Right (**Dr.GRPO**)
 - More coming soon
