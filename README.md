@@ -17,11 +17,10 @@ Break free from complex frameworks and focus on the core logic of LLM post train
 - Dynamic Fine-Tuning (**DFT**) [[Paper](https://arxiv.org/abs/2508.05629) | [Code](https://github.com/zht8506/Easy-LLM-Post-Training/tree/main/dft)]
 - Direct Preference Optimization (**DPO**) [[Paper](https://arxiv.org/abs/2305.18290)]
 - Proximal Policy Optimization (**PPO**) [[Paper](https://arxiv.org/abs/1707.06347) | [Code](https://github.com/zht8506/Easy-LLM-Post-Training/tree/main/ppo)]
+- Group Relative Policy Optimization (**GRPO**) [[Paper](https://arxiv.org/abs/2402.03300) | [Code](https://github.com/zht8506/Easy-LLM-Post-Training/tree/main/grpo)]
 
 ## 🔄 Upcoming Methods
 - Simple Preference Optimization (**SimPO**)
-- Proximal Policy Optimization (**PPO**)
-- Group Relative Policy Optimization (**GRPO**)
 - Group Sequence Policy Optimization (**GSPO**)
 - Group Relative Policy Optimization Done Right (**Dr.GRPO**)
 - More coming soon
