@@ -42,7 +42,6 @@ def preference_loss(
     reference_chosen_logps: torch.FloatTensor,
     reference_rejected_logps: torch.FloatTensor,
     beta: float,
-    label_smoothing: float = 0.0
 ) -> Tuple[torch.FloatTensor, torch.FloatTensor, torch.FloatTensor]:
     
     pi_logratios = policy_chosen_logps - policy_rejected_logps
