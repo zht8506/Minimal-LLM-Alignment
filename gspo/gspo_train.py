@@ -9,7 +9,7 @@ import time
 import sys
 from pathlib import Path
 from copy import deepcopy
-from typing import List, Tuple
+from typing import List, Tuple, Optional
 
 import torch
 import torch.nn.functional as F
