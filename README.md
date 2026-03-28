@@ -13,15 +13,25 @@ Break free from complex frameworks and focus on the core logic of LLM post train
 
 ## 🚀 Supported Algorithms
 
+
 - Supervised Fine-Tuning (**SFT**) [[Code](https://github.com/zht8506/Easy-LLM-Post-Training/tree/main/sft)]
 - Dynamic Fine-Tuning (**DFT**) [[Paper](https://arxiv.org/abs/2508.05629) | [Code](https://github.com/zht8506/Easy-LLM-Post-Training/tree/main/dft)]
 - Direct Preference Optimization (**DPO**) [[Paper](https://arxiv.org/abs/2305.18290)]
 - Simple Preference Optimization (**SimPO**) [[Paper](https://arxiv.org/abs/2405.14734) | [Code](https://github.com/zht8506/Easy-LLM-Post-Training/tree/main/simpo)]
 - Proximal Policy Optimization (**PPO**) [[Paper](https://arxiv.org/abs/1707.06347) | [Code](https://github.com/zht8506/Easy-LLM-Post-Training/tree/main/ppo)]
 - Group Relative Policy Optimization (**GRPO**) [[Paper](https://arxiv.org/abs/2402.03300) | [Code](https://github.com/zht8506/Easy-LLM-Post-Training/tree/main/grpo)]
+- Group Sequence Policy Optimization (**GRPO**) [[Paper](https://arxiv.org/abs/2507.18071) | [Code](https://github.com/zht8506/Easy-LLM-Post-Training/tree/main/gspo)]
+
+| **Release** | **Method** | **Reference** | **Notes** | **Link** |
+| --- | --- | --- | --- | --- |
+| 2023/05 | **DPO** | Direct preference optimization: Your language model is secretly a reward model | NeurIPS 2023 | [paper](https://arxiv.org/abs/2305.18290)/[code](https://github.com/eric-mitchell/direct-preference-optimization)|
+| 2023/10 | **IPO** | A General Theoretical Paradigm to Understand Learning from Human Preferences | AISTATS 2024 | [paper](https://arxiv.org/abs/2310.12036)|
+| 2024/02 | **KTO** | KTO: Model Alignment as Prospect Theoretic Optimization | ICML 2024 | [paper](https://arxiv.org/abs/2402.01306)/[code](https://github.com/ContextualAI/HALOs)|
+| 2024/03 | **ORPO** | Orpo: Monolithic preference optimization without reference model | EMNLP 2024 | [paper](https://arxiv.org/abs/2403.07691)/[code](https://github.com/xfactlab/orpo)|
+| 2024/05 | **SimPO** | Simpo: Simple preference optimization with a reference-free reward | NeurIPS 2024 | [paper](https://arxiv.org/abs/2405.14734)/[code](https://github.com/princeton-nlp/SimPO)|
+
 
 ## 🔄 Upcoming Methods
-- Group Sequence Policy Optimization (**GSPO**)
 - Group Relative Policy Optimization Done Right (**Dr.GRPO**)
 - More coming soon
 
