@@ -2,7 +2,7 @@
 
 \[English | [中文](README_zh.md)\]
 
-Implement popular LLM post-training algorithms (SFT, DPO, PPO, GRPO, etc) in PyTorch with easy code! 
+Implement popular LLM post-training algorithms (SFT, DPO, PPO, GRPO, etc.) in PyTorch with clean, simple code!
 
 以简洁代码，基于 PyTorch 实现主流大模型后训练算法！
 
