@@ -263,7 +263,7 @@ class GRPOTrainer:
         }
 
     # ------------------------------------------------------------------
-    # Step 3 · GRPO update: PPO-clip actor loss + KL penalty (no critic)
+    # Step 3 · GRPO update: group-wise advantage calculation + KL penalty
     # ------------------------------------------------------------------
     def grpo_update(self, experience: dict) -> dict:
         """
