@@ -1,5 +1,5 @@
 """
-Simple GRPO (Group Relative Policy Optimization) Training for LLM.
+Simple GSPO (Group Sequence Policy Optimization) Training for LLM.
 """
 
 import argparse
