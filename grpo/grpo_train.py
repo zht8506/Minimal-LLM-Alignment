@@ -1,5 +1,5 @@
 """
-Simple PPO (Proximal Policy Optimization) Training for LLM.
+Simple GRPO (Group Relative Policy Optimization) Training for LLM.
 """
 
 import argparse
