@@ -319,7 +319,7 @@ class GRPOTrainer:
 
                 # ── PPO-clip policy loss ──
                 log_ratio = new_log_probs - old_log_probs
-                ratio = log_ratio.exp()                                    # (B, S-1)
+                ratio = log_ratio.exp()                                    # importance ratio (B, S-1)
 
                 # broadcast per-response advantage → per-token
                 token_advantages = advantages.unsqueeze(1).expand_as(ratio) * action_mask
