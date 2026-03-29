@@ -317,7 +317,7 @@ class GRPOTrainer:
                     actor_out = self.actor(input_ids=sequences, attention_mask=attention_mask)
                 new_log_probs = compute_log_probs(actor_out.logits, sequences, action_mask)
 
-                # ──────────────── GRPO loss begin ──────────────
+                # ──────────────────────────── GRPO loss begin ──────────────────────────
                 log_ratio = new_log_probs - old_log_probs
                 ratio = log_ratio.exp()                                    # importance ratio (B, S-1)
 
@@ -342,7 +342,7 @@ class GRPOTrainer:
 
                 loss = (actor_loss + args.kl_coef * kl_penalty + args.entropy_coef * entropy_loss) / actual_accum
                 loss.backward()
-                # ──────────────── GRPO loss end ──────────────
+                # ──────────────────────────── GRPO loss end ──────────────────────────
 
                 mini_actor_loss += actor_loss.item()
                 mini_clip_ratio += clip_ratio.item()
