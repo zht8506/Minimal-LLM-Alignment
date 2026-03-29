@@ -58,7 +58,7 @@ def compute_approx_kl(
 
     return masked_mean(kl, action_mask)       # (B,)
 
-class GRPOTrainer:
+class GSPOTrainer:
     def __init__(self, args):
         self.args = args
         self.device = torch.device(args.device if torch.cuda.is_available() else "cpu")
@@ -265,7 +265,7 @@ class GRPOTrainer:
     # ------------------------------------------------------------------
     # Step 3 · GSPO update: group-wise advantage calculation + KL penalty
     # ------------------------------------------------------------------
-    def grpo_update(self, experience: dict) -> dict:
+    def gspo_update(self, experience: dict) -> dict:
         """
         Split into mini-batches of ppo_mini_batch_size.
         Each mini-batch is further split into micro-batches of
@@ -470,7 +470,7 @@ class GRPOTrainer:
                 experience = self.make_experience(rollout_data, rewards)
 
                 # ── Step 3: GRPO update ──
-                update_stats = self.grpo_update(experience)
+                update_stats = self.gspo_update(experience)
 
                 step_duration = time.time() - step_t0
 
@@ -584,7 +584,7 @@ def parse_args():
 
 def main():
     args = parse_args()
-    trainer = GRPOTrainer(args)
+    trainer = GSPOTrainer(args)
     trainer.train()
 
 
