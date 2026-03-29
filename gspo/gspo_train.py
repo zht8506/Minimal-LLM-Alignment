@@ -317,6 +317,7 @@ class GSPOTrainer:
                     actor_out = self.actor(input_ids=sequences, attention_mask=attention_mask)
                 new_log_probs = compute_log_probs(actor_out.logits, sequences, action_mask)
 
+                # ──────────────── GSPO loss begin ──────────────
                 # ── log ratio: log(π_θ / π_θ_old) ──
                 log_ratio = new_log_probs - old_log_probs
 
@@ -353,6 +354,7 @@ class GSPOTrainer:
 
                 loss = (actor_loss + args.kl_coef * kl_penalty + args.entropy_coef * entropy_loss) / actual_accum
                 loss.backward()
+                # ──────────────── GSPO loss end ──────────────
 
                 mini_actor_loss += actor_loss.item()
                 mini_clip_ratio += clip_ratio.item()
