@@ -242,7 +242,7 @@ class GSPOTrainer:
 
         kl_per_seq = compute_approx_kl(old_log_probs, ref_log_probs, action_mask)  # (N,)
 
-        # ── Group-relative advantage normalization ──
+        # ── GRPO advantage: Group-relative advantage normalization ──
         # For each group (same prompt), normalize: adv_i = (r_i - mean) / (std + eps)
         advantages = torch.zeros_like(rewards)
         for gid in group_ids.unique():
