@@ -391,6 +391,7 @@ class PPOTrainer:
                     )
                 new_log_probs = compute_log_probs(actor_out.logits, sequences, action_mask)
 
+                # ──────────────────────────── PPO loss begin ──────────────────────────
                 log_ratio = new_log_probs - old_log_probs
                 ratio = log_ratio.exp() # importance sampling
 
@@ -430,6 +431,8 @@ class PPOTrainer:
 
                 actor_total_loss.backward()
                 critic_total_loss.backward()
+                # ──────────────────────────── PPO loss end ──────────────────────────
+                
 
                 mini_actor_loss  += actor_loss.item()
                 mini_critic_loss += critic_loss.item()
