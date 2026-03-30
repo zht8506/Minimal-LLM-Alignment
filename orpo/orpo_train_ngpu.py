@@ -239,8 +239,7 @@ class ORPOTrainer(BaseTrainer):
         losses, chosen_rewards, rejected_rewards = orpo_loss(
             policy_chosen_logps,
             policy_rejected_logps,
-            beta=self.args.beta,
-            gamma=self.args.gamma
+            beta=self.args.beta
         )
 
         reward_acc = (chosen_rewards > rejected_rewards).float().mean().item()
