@@ -42,6 +42,8 @@ bash train.sh
 
 - Direct Preference Optimization (**DPO**) [[Paper](https://arxiv.org/abs/2305.18290)]
 - Simple Preference Optimization (**SimPO**) [[Paper](https://arxiv.org/abs/2405.14734) | [Code](https://github.com/zht8506/Easy-LLM-Post-Training/tree/main/simpo)]
+- Odds Ratio Preference Optimization (**ORPO**) [[Paper](https://arxiv.org/abs/2403.07691) | [Code](https://github.com/zht8506/Easy-LLM-Post-Training/tree/main/orpo)]
+
 
 **PPO-Series**
 - Proximal Policy Optimization (**PPO**) [[Paper](https://arxiv.org/abs/1707.06347) | [Code](https://github.com/zht8506/Easy-LLM-Post-Training/tree/main/ppo)]
@@ -49,8 +51,8 @@ bash train.sh
 - Group Sequence Policy Optimization (**GSPO**) [[Paper](https://arxiv.org/abs/2507.18071) | [Code](https://github.com/zht8506/Easy-LLM-Post-Training/tree/main/gspo)]
 - **REINFORCE++** [[Paper](https://arxiv.org/abs/2501.03262) | [Code](https://github.com/zht8506/Easy-LLM-Post-Training/tree/main/reinforce++)]
 - Group Relative Policy Optimization Done Right (**Dr.GRPO**) [[Paper](https://arxiv.org/abs/2503.20783) | [Code](https://github.com/zht8506/Easy-LLM-Post-Training/tree/main/dr.grpo)]
-- Odds Ratio Preference Optimization (**ORPO**) [[Paper](https://arxiv.org/abs/2403.07691) | [Code](https://github.com/zht8506/Easy-LLM-Post-Training/tree/main/orpo)]
+- Decoupled Clip and Dynamic sAmpling Policy Optimization (**DAPO**)
+
 
 ## 🔄 Upcoming Methods
-- Decoupled Clip and Dynamic sAmpling Policy Optimization (**DAPO**)
 - More coming soon
