@@ -25,9 +25,20 @@ from gsm8k_dataset import GSM8KJsonDataset, gsm8k_collate_fn
 from gsm8k_reward import compute_gsm8k_reward_batch
 
 
-def masked_mean(tensor: torch.Tensor, mask: torch.BoolTensor, dim: int = -1) -> torch.Tensor:
+def masked_mean(values: torch.Tensor, mask: torch.BoolTensor, dim: int = -1) -> torch.Tensor:
     """Compute mean over masked positions."""
-    return (tensor * mask).sum(dim) / mask.sum(dim).clamp(min=1)
+    # If NaNs exist out of mask, replace NaNs in values with a value that
+    # won't affect the sum (e.g., 0 for masked regions)
+    valid_values = torch.where(mask.bool(), values, 0.0)
+    return (valid_values * mask).sum(dim) / mask.sum(dim).clamp(min=1)
+
+
+def masked_sum(values: torch.Tensor, mask: torch.BoolTensor, dim: int = -1) -> torch.Tensor:
+    """Compute mean over masked positions."""
+    # If NaNs exist out of mask, replace NaNs in values with a value that
+    # won't affect the sum (e.g., 0 for masked regions)
+    valid_values = torch.where(mask.bool(), values, 0.0)
+    return (valid_values * mask).sum(dim)
 
 
 def compute_log_probs(
@@ -72,7 +83,7 @@ def compute_approx_kl(
     return masked_mean(log_ratio.clamp(min=-10, max=10), action_mask)       # (B,)
 
 
-class GRPOTrainer:
+class DRGRPOTrainer:
     def __init__(self, args):
         self.args = args
         self.device = torch.device(args.device if torch.cuda.is_available() else "cpu")
@@ -264,7 +275,9 @@ class GRPOTrainer:
             group_rewards = rewards[mask]
             mean_r = group_rewards.mean()
             std_r = group_rewards.std()
-            advantages[mask] = (group_rewards - mean_r) / (std_r + 1e-4)
+            # advantages[mask] = (group_rewards - mean_r) / (std_r + 1e-4)
+            # ── DR. GRPO removes the std_r. ──
+            advantages[mask] = (group_rewards - mean_r)
 
         return {
             "sequences":      sequences,
@@ -340,11 +353,12 @@ class GRPOTrainer:
 
                 surr1 = ratio * token_advantages
                 surr2 = ratio.clamp(1 - args.clip_eps, 1 + args.clip_eps) * token_advantages
-                actor_loss = -masked_mean(torch.min(surr1, surr2), action_mask).mean()
+                # actor_loss = -masked_mean(torch.min(surr1, surr2), action_mask).mean()
+                actor_loss = -masked_sum(torch.min(surr1, surr2), action_mask).mean() # dr.grpo remove sequence-level average
 
                 # ── KL penalty (per-token, with ref model) ──
                 # ── Unlike PPO, KL in the loss for GRPO ──
-                kl_penalty = masked_mean(new_log_probs - ref_log_probs, action_mask).mean()
+                kl_penalty = compute_approx_kl(new_log_probs, ref_log_probs, action_mask, kl_estimator = "k3").mean()
 
                 # ── entropy loss ──
                 logits = actor_out.logits[:, :-1, :]
@@ -586,7 +600,7 @@ def parse_args():
 
 def main():
     args = parse_args()
-    trainer = GRPOTrainer(args)
+    trainer = DRGRPOTrainer(args)
     trainer.train()
 
 
