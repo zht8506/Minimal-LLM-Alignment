@@ -48,9 +48,8 @@ bash train.sh
 - Group Relative Policy Optimization (**GRPO**) [[Paper](https://arxiv.org/abs/2402.03300) | [Code](https://github.com/zht8506/Easy-LLM-Post-Training/tree/main/grpo)]
 - Group Sequence Policy Optimization (**GSPO**) [[Paper](https://arxiv.org/abs/2507.18071) | [Code](https://github.com/zht8506/Easy-LLM-Post-Training/tree/main/gspo)]
 - **REINFORCE++** [[Paper](https://arxiv.org/abs/2501.03262) | [Code](https://github.com/zht8506/Easy-LLM-Post-Training/tree/main/reinforce++)]
-
+- Group Relative Policy Optimization Done Right (**Dr.GRPO**) [[Paper](https://arxiv.org/abs/2503.20783) | [Code](https://github.com/zht8506/Easy-LLM-Post-Training/tree/main/dr.grpo)]
 
 ## 🔄 Upcoming Methods
-- Group Relative Policy Optimization Done Right (**Dr.GRPO**)
 - Decoupled Clip and Dynamic sAmpling Policy Optimization (**DAPO**)
 - More coming soon
