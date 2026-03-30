@@ -50,14 +50,27 @@ def compute_approx_kl(
     log_probs: torch.Tensor,           # (B, S-1)
     ref_log_probs: torch.Tensor,       # (B, S-1)
     action_mask: torch.BoolTensor,     # (B, S-1)
+    kl_estimator: str = "k1"
 ) -> torch.Tensor:
-    """
-    k1 estimator (https://github.com/verl-project/verl/blob/main/verl/trainer/ppo/core_algos.py#L2152)
-    """
-    kl = log_probs - ref_log_probs            # (B, S-1)
+    """k1 KL estimator."""
+    log_ratio = log_probs - ref_log_probs            # (B, S-1)
+    
+    if kl_estimator == "k1":
+        pass  # log_ratio is already p - q
+    elif kl_estimator == "k2":
+        # Non-negative KL approximation: (p - q)^2 / 2
+        # http://joschu.net/blog/kl-approx.html
+        # Approximately equivalent to one-step KL penalty with k1
+        # used in https://arxiv.org/pdf/2310.10505.
+        log_ratio = log_ratio**2 / 2.0
+    elif kl_estimator == "k3":
+        # Non-negative KL approximation: exp(q - p) - 1 - (q - p)
+        # http://joschu.net/blog/kl-approx.html
+        log_ratio = (-log_ratio).exp() - 1 + log_ratio
+    else:
+        raise ValueError(f"Unknown kl_estimator: {kl_estimator}")
 
-    return masked_mean(kl, action_mask)       # (B,)
-
+    return masked_mean(log_ratio.clamp(min=-10, max=10), action_mask)       # (B,)
 
 def compute_gae(
     values: torch.Tensor,          # (B, S-1)  — value at each token position
