@@ -52,4 +52,5 @@ bash train.sh
 
 ## 🔄 Upcoming Methods
 - Group Relative Policy Optimization Done Right (**Dr.GRPO**)
+- Decoupled Clip and Dynamic sAmpling Policy Optimization (**DAPO*)
 - More coming soon
