@@ -45,18 +45,32 @@ def compute_log_probs(
     # action_mask is defined on response tokens (starting at prompt_len)
     return per_token_lp * action_mask  # zero out prompt positions
 
-
 def compute_approx_kl(
     log_probs: torch.Tensor,           # (B, S-1)
     ref_log_probs: torch.Tensor,       # (B, S-1)
     action_mask: torch.BoolTensor,     # (B, S-1)
+    kl_estimator: str = "k1"
 ) -> torch.Tensor:
-    """
-    k1 estimator (https://github.com/verl-project/verl/blob/main/verl/trainer/ppo/core_algos.py#L2152)
-    """
-    kl = log_probs - ref_log_probs            # (B, S-1)
+    """k1 KL estimator."""
+    log_ratio = log_probs - ref_log_probs            # (B, S-1)
+    
+    if kl_estimator == "k1":
+        pass  # log_ratio is already p - q
+    elif kl_estimator == "k2":
+        # Non-negative KL approximation: (p - q)^2 / 2
+        # http://joschu.net/blog/kl-approx.html
+        # Approximately equivalent to one-step KL penalty with k1
+        # used in https://arxiv.org/pdf/2310.10505.
+        log_ratio = log_ratio**2 / 2.0
+    elif kl_estimator == "k3":
+        # Non-negative KL approximation: exp(q - p) - 1 - (q - p)
+        # http://joschu.net/blog/kl-approx.html
+        log_ratio = (-log_ratio).exp() - 1 + log_ratio
+    else:
+        raise ValueError(f"Unknown kl_estimator: {kl_estimator}")
 
-    return masked_mean(kl, action_mask)       # (B,)
+    return masked_mean(log_ratio.clamp(min=-10, max=10), action_mask)       # (B,)
+
 
 class GRPOTrainer:
     def __init__(self, args):
@@ -240,7 +254,7 @@ class GRPOTrainer:
             ref_out = self.ref_model(input_ids=sequences, attention_mask=attention_mask)
         ref_log_probs = compute_log_probs(ref_out.logits, sequences, action_mask)
 
-        kl_per_seq = compute_approx_kl(old_log_probs, ref_log_probs, action_mask)  # (N,)
+        kl_per_seq = compute_approx_kl(old_log_probs, ref_log_probs, action_mask, kl_estimator = "k3")  # (N,)
 
         # ── GRPO advantage: Group-relative advantage normalization ──
         # For each group (same prompt), normalize: adv_i = (r_i - mean) / (std + eps)
