@@ -52,7 +52,7 @@ def compute_approx_kl(
     action_mask: torch.BoolTensor,     # (B, S-1)
     kl_estimator: str = "k1"
 ) -> torch.Tensor:
-    """k1 KL estimator."""
+    """KL estimator from OpenRLHF."""
     log_ratio = log_probs - ref_log_probs            # (B, S-1)
     
     if kl_estimator == "k1":
