@@ -344,7 +344,7 @@ class GRPOTrainer:
 
                 # ── KL penalty (per-token, with ref model) ──
                 # ── Unlike PPO, KL in the loss for GRPO ──
-                kl_penalty = masked_mean(new_log_probs - ref_log_probs, action_mask).mean()
+                kl_penalty = compute_approx_kl(new_log_probs, ref_log_probs, action_mask, kl_estimator = "k3").mean()
 
                 # ── entropy loss ──
                 logits = actor_out.logits[:, :-1, :]
