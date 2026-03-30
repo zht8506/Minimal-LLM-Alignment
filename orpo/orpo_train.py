@@ -212,7 +212,7 @@ def parse_args():
     # paths
     parser.add_argument("--model_path", type=str, required=True, help="Path to Model file.")
     parser.add_argument("--train_json", type=str, required=True, help="Path to DPO json file.")
-    parser.add_argument("--output_dir", type=str, default="./outputs/simple-dpo")
+    parser.add_argument("--output_dir", type=str, default="./outputs/orpo")
     # hyper-params
     parser.add_argument("--max_length", type=int, default=2048)
     parser.add_argument("--num_train_epochs", type=int, default=1)
