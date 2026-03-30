@@ -29,7 +29,6 @@ def _get_batch_logps(
 ) -> torch.FloatTensor:
     """
     Calculate the GT label log probabilities of each sample.
-    average_log_prob = True for simpo.
     """
     assert logits.shape[:-1] == labels.shape
     labels = labels[:, 1:].clone()
@@ -42,21 +41,25 @@ def _get_batch_logps(
     return (per_token_logps * loss_mask).sum(-1)
 
 
-def simpo_loss(
-    policy_chosen_logps: torch.FloatTensor,
-    policy_rejected_logps: torch.FloatTensor,
-    beta: float,
-    gamma: float, # reward margin
-) -> Tuple[torch.FloatTensor, torch.FloatTensor, torch.FloatTensor]:
+def orpo_loss(
+    chosen_logps: torch.FloatTensor, 
+    rejected_logps: torch.FloatTensor, 
+    beta: float
+) -> torch.FloatTensor:
+    r"""Compute ORPO's odds ratio (OR) loss for batched log probabilities of the policy model.
+        orpo paper: https://arxiv.org/abs/2403.07691"""
     
-    pi_logratios = policy_chosen_logps - policy_rejected_logps
+    log_odds = (chosen_logps - rejected_logps) - (
+        torch.log1p(-torch.exp(chosen_logps)) - torch.log1p(-torch.exp(rejected_logps))
+    )
+    sft_loss = -chosen_logps
+    odds_ratio_loss = -F.logsigmoid(log_odds)
+    orpo_loss = sft_loss + beta * odds_ratio_loss
 
-    losses = -F.logsigmoid(beta * pi_logratios - gamma)
+    chosen_rewards = chosen_logps.detach()
+    rejected_rewards = rejected_logps.detach()
 
-    chosen_rewards = beta * policy_chosen_logps.detach()
-    rejected_rewards = beta * policy_rejected_logps.detach()
-
-    return losses, chosen_rewards, rejected_rewards
+    return orpo_loss, chosen_rewards, rejected_rewards
 
 
 def move_batch_to_device(batch, device):
@@ -207,7 +210,7 @@ class BaseTrainer:
 
         self._save_checkpoint("final")
 
-class SimPOTrainer(BaseTrainer):
+class ORPOTrainer(BaseTrainer):
 
     def separate_forward(self, model: torch.nn.Module, batch: Dict) -> Tuple[torch.Tensor, torch.Tensor]:
         # Forward for chosen
@@ -233,7 +236,7 @@ class SimPOTrainer(BaseTrainer):
     def get_batch_metrics(self, batch, train: bool = True):
         policy_chosen_logps, policy_rejected_logps = self.separate_forward(self.model, batch)
 
-        losses, chosen_rewards, rejected_rewards = simpo_loss(
+        losses, chosen_rewards, rejected_rewards = orpo_loss(
             policy_chosen_logps,
             policy_rejected_logps,
             beta=self.args.beta,
@@ -254,14 +257,13 @@ def parse_args():
     # paths
     parser.add_argument("--model_path", type=str, required=True, help="Path to Model file.")
     parser.add_argument("--train_json", type=str, required=True, help="Path to DPO json file.")
-    parser.add_argument("--output_dir", type=str, default="./outputs/simple-dpo")
+    parser.add_argument("--output_dir", type=str, default="./outputs/orpo")
     # hyper-params
     parser.add_argument("--max_length", type=int, default=2048)
     parser.add_argument("--num_train_epochs", type=int, default=1)
     parser.add_argument("--per_device_train_batch_size", type=int, default=1)
     parser.add_argument("--gradient_accumulation_steps", type=int, default=8)
     parser.add_argument("--beta", type=float, default=2.0)
-    parser.add_argument("--gamma", type=float, default=1)
     # optimizer
     parser.add_argument("--learning_rate", type=float, default=2e-5)
     parser.add_argument("--weight_decay", type=float, default=0.0)
@@ -322,7 +324,7 @@ def main():
         collate_fn=data_collator,
     )
 
-    trainer = SimPOTrainer(
+    trainer = ORPOTrainer(
         model=policy,
         tokenizer=tokenizer,
         train_loader=train_loader,
