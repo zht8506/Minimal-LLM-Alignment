@@ -361,13 +361,14 @@ class DAPOTrainer:
                 old_log_probs  = experience["old_log_probs"][micro_idx]
                 ref_log_probs  = experience["ref_log_probs"][micro_idx]
                 advantages     = experience["advantages"][micro_idx]       # (micro_B,)
+                seq_weights    = experience["seq_weights"][micro_idx]
 
                 # ── new actor forward ──
                 with autocast_ctx:
                     actor_out = self.actor(input_ids=sequences, attention_mask=attention_mask)
                 new_log_probs = compute_log_probs(actor_out.logits, sequences, action_mask)
 
-                # ──────────────────────────── GRPO loss begin ──────────────────────────
+                # ──────────────────────────── DAPO loss begin ──────────────────────────
                 log_ratio = new_log_probs - old_log_probs
                 ratio = log_ratio.exp()                                    # importance ratio (B, S-1)
 
@@ -396,7 +397,7 @@ class DAPOTrainer:
 
                 loss = (actor_loss + args.kl_coef * kl_penalty + args.entropy_coef * entropy_loss) / actual_accum
                 loss.backward()
-                # ──────────────────────────── GRPO loss end ──────────────────────────
+                # ──────────────────────────── DAPO loss end ──────────────────────────
 
                 mini_actor_loss += actor_loss.item()
                 mini_clip_ratio += clip_ratio.item()
