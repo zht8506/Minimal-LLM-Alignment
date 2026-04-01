@@ -410,13 +410,15 @@ class PPOTrainer:
 
                 surr1 = ratio * advantages
                 surr2 = ratio.clamp(1 - args.clip_eps, 1 + args.clip_eps) * advantages
-                actor_loss = -masked_mean(torch.min(surr1, surr2), action_mask).mean()
+                # actor_loss = -masked_mean(torch.min(surr1, surr2), action_mask).mean()
+                actor_loss = -masked_mean(torch.min(surr1, surr2), action_mask, dim= None) # token-mean as verl
 
                 # ── entropy loss ──
                 logits = actor_out.logits[:, :-1, :]
                 probs  = logits.softmax(dim=-1)
                 entropy = -(probs * probs.clamp(min=1e-8).log()).sum(-1) # entropy = p * logp
-                entropy_loss = -masked_mean(entropy, action_mask).mean()
+                # entropy_loss = -masked_mean(entropy, action_mask).mean()
+                entropy_loss = -masked_mean(entropy, action_mask, dim= None) # token-mean as verl
 
                 clip_ratio = masked_mean((surr2 < surr1).float(), action_mask).mean()
 
@@ -436,7 +438,8 @@ class PPOTrainer:
                 )
                 vf_loss1 = (new_values     - returns) ** 2
                 vf_loss2 = (values_clipped - returns) ** 2
-                critic_loss = 0.5 * masked_mean(torch.max(vf_loss1, vf_loss2), action_mask).mean()
+                # critic_loss = 0.5 * masked_mean(torch.max(vf_loss1, vf_loss2), action_mask).mean()
+                critic_loss = 0.5 * masked_mean(torch.max(vf_loss1, vf_loss2), action_mask, dim= None) # token-mean as verl
 
                 # scale loss by 1/actual_accum to average gradients
                 actor_total_loss  = (actor_loss + args.entropy_coef * entropy_loss) / actual_accum
