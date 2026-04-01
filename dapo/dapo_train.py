@@ -264,7 +264,6 @@ class DAPOTrainer:
         sequences      = rollout_data["sequences"]
         attention_mask = rollout_data["attention_mask"]
         action_mask    = rollout_data["action_mask"]
-        response_len   = rollout_data["response_len"]
         group_ids      = rollout_data["group_ids"]
 
         autocast_ctx = torch.autocast(device_type=self.device.type,
@@ -285,20 +284,12 @@ class DAPOTrainer:
         # ── GRPO advantage: Group-relative advantage normalization ──
         # For each group (same prompt), normalize: adv_i = (r_i - mean) / (std + eps)
         advantages = torch.zeros_like(rewards)
-        seq_weights = torch.zeros_like(response_len, dtype=torch.float32)
         for gid in group_ids.unique():
             mask = group_ids == gid
             group_rewards = rewards[mask]
             mean_r = group_rewards.mean()
             std_r = group_rewards.std()
             advantages[mask] = (group_rewards - mean_r) / (std_r + 1e-4)
-
-            # DAPO sequence-level length-normalized weight inside each group.
-            group_response_len = response_len[mask].float()
-            group_total_len = group_response_len.sum() + 1e-8
-
-            group_size = mask.sum().float()
-            seq_weights[mask] = (group_response_len / group_total_len) * group_size
 
         return {
             "sequences":      sequences,
@@ -307,9 +298,7 @@ class DAPOTrainer:
             "old_log_probs":  old_log_probs.detach(),
             "ref_log_probs":  ref_log_probs.detach(),
             "advantages":     advantages.detach(),       # (N,)  per-response scalar
-            "seq_weights":    seq_weights.detach(),      # (N,)  precomputed group-normalized weights
             "kl":             kl_per_seq.mean().item(),
-            "response_len":   response_len,      # (B*G, )
         }
 
     # ------------------------------------------------------------------
@@ -361,7 +350,6 @@ class DAPOTrainer:
                 old_log_probs  = experience["old_log_probs"][micro_idx]
                 ref_log_probs  = experience["ref_log_probs"][micro_idx]
                 advantages     = experience["advantages"][micro_idx]       # (micro_B,)
-                seq_weights    = experience["seq_weights"][micro_idx]
 
                 # ── new actor forward ──
                 with autocast_ctx:
@@ -378,10 +366,7 @@ class DAPOTrainer:
                 surr1 = ratio * token_advantages
                 surr2 = ratio.clamp(1 - args.clip_eps_low, 1 + args.clip_eps_high) * token_advantages
 
-                # actor_loss = -masked_mean(torch.min(surr1, surr2), action_mask).mean()
-                # dapo use sequence-level length normalization
-                seq_actor_loss = -masked_mean(torch.min(surr1, surr2), action_mask)
-                actor_loss = (seq_actor_loss * seq_weights).mean()
+                actor_loss = -masked_mean(torch.min(surr1, surr2), action_mask, dim=None)  # token-mean as ppo
 
                 # ── KL penalty (per-token, with ref model) ──
                 # ── Unlike PPO, KL in the loss for GRPO ──
@@ -391,7 +376,7 @@ class DAPOTrainer:
                 logits = actor_out.logits[:, :-1, :]
                 probs  = logits.softmax(dim=-1)
                 entropy = -(probs * probs.clamp(min=1e-8).log()).sum(-1)
-                entropy_loss = -masked_mean(entropy, action_mask).mean()
+                entropy_loss = -masked_mean(entropy, action_mask, dim=None)  # token-mean as ppo
 
                 clip_ratio = masked_mean((surr2 < surr1).float(), action_mask).mean()
 
