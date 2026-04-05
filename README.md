@@ -51,7 +51,7 @@ bash train.sh
 - Group Sequence Policy Optimization (**GSPO**) [[Paper](https://arxiv.org/abs/2507.18071) | [Code](https://github.com/zht8506/Easy-LLM-Post-Training/tree/main/gspo)]
 - **REINFORCE++** [[Paper](https://arxiv.org/abs/2501.03262) | [Code](https://github.com/zht8506/Easy-LLM-Post-Training/tree/main/reinforce++)]
 - Group Relative Policy Optimization Done Right (**Dr.GRPO**) [[Paper](https://arxiv.org/abs/2503.20783) | [Code](https://github.com/zht8506/Easy-LLM-Post-Training/tree/main/dr.grpo)]
-- Decoupled Clip and Dynamic sAmpling Policy Optimization (**DAPO**)
+- Decoupled Clip and Dynamic sAmpling Policy Optimization (**DAPO**) [[Paper](https://arxiv.org/abs/2503.14476) | [Code](https://github.com/zht8506/Easy-LLM-Post-Training/tree/main/dapo)]
 
 
 ## 🔄 Upcoming Methods
