@@ -55,5 +55,5 @@ bash train.sh
 
 
 ## 🔄 Upcoming Methods
-- TIS+GRPO
+- TIS-GRPO
 - More coming soon
