@@ -56,4 +56,5 @@ bash train.sh
 
 ## 🔄 Upcoming Methods
 - TIS-GRPO
+- VAPO
 - More coming soon
