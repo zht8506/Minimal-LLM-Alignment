@@ -52,10 +52,10 @@ bash train.sh
 - **REINFORCE++** [[Paper](https://arxiv.org/abs/2501.03262) | [Code](https://github.com/zht8506/Easy-LLM-Post-Training/tree/main/reinforce++)]
 - Group Relative Policy Optimization Done Right (**Dr.GRPO**) [[Paper](https://arxiv.org/abs/2503.20783) | [Code](https://github.com/zht8506/Easy-LLM-Post-Training/tree/main/dr.grpo)]
 - Decoupled Clip and Dynamic sAmpling Policy Optimization (**DAPO**) [[Paper](https://arxiv.org/abs/2503.14476) | [Code](https://github.com/zht8506/Easy-LLM-Post-Training/tree/main/dapo)]
+- REINFORCE Leave-One-Out (**RLOO**) [[Paper](https://arxiv.org/abs/2402.14740) | [Code](https://github.com/zht8506/Easy-LLM-Post-Training/tree/main/rloo)]
 
 
 ## 🔄 Upcoming Methods
 - TIS-GRPO
 - VAPO
-- RLOO
 - More coming soon
